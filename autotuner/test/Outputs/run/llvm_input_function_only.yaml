@@ -1,0 +1,28 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+!AutoTuning
+Args:
+- ForceTargetMaxVectorInterleaveFactor: 4
+CodeRegionType: function
+DebugLoc:
+  Column: 0
+  File: core_list_join.c
+  Line: 0
+Function: core_list_insert_new
+Name: 'f1'
+Pass: loop-vectorize
+CodeRegionHash: 999999999
+Invocation: 0
+--- !AutoTuning
+Args:
+- ForceTargetMaxVectorInterleaveFactor: 2
+CodeRegionType: function
+DebugLoc:
+  Column: 0
+  File: core_list_join.c
+  Line: 0
+Function: core_list_undo_remove
+Name: 'f2'
+Pass: loop-vectorize
+CodeRegionHash: 888888888
+Invocation: 0

@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+llvm-autotune: Modern scriptable command-line interface.
+
+Copyright (C) 2017-2020, Huawei Technologies Co., Ltd. All rights reserved.
+"""
+
+import re
+import site
+import sys
+
+def error_message(package_name, path):
+    print("Please ensure that required packages are installed.")
+    print(f"Missing package(s): {package_name}")
+    print("\nThe missing package must be installed in one of these locations.")
+    print(path)
+    print("\nAlternatively, please add the installation directory to PYTHONPATH variable.")
+
+if __name__ == '__main__':
+    try:
+        from autotuner.resumable.main import main
+    except Exception as e:
+        if (isinstance(e, ModuleNotFoundError)):
+            if e.name == "autotuner":
+                print("Please ensure that required packages are installed.")
+                print(f"Missing package(s): {e.name}")
+                print("Please run install-autotuner.sh before running llvm-autotune.")
+            else:
+                site_location = site.USER_SITE
+                if "/lib64/" not in site_location and "/lib/" in site_location:
+                    site_location = site_location.replace("/lib/","/lib64/")
+                    sys.path.append(site_location)
+                    try:
+                        from autotuner.resumable.main import main
+                        sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+                        sys.exit(main())
+                    except Exception as e:
+                        if (isinstance(e, ModuleNotFoundError)):
+                            error_message(e.name, sys.path)
+                else:
+                    error_message(e.name, sys.path)
+
+        else:
+            print(e)
+
+        sys.exit(1)
+
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

@@ -1,0 +1,2806 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+   CodeRegionType: loop
+   Pass: loop-unroll
+   Args:
+     UnrollCount:
+       Value: [0, 1, 2, 4, 8]
+       Type: enum
+---
+CodeRegion:
+   CodeRegionType: loop
+   Pass: loop-vectorize
+   Args:
+     VectorizationInterleave:
+       Value: [1, 2, 4]
+       Type: enum
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  Pass: machine-scheduler
+  Args:
+    MachineScheduling:
+      Value: ["TopDown", "BottomUp", "Bidirectional"]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: instruction
+  Pass: switch-lowering
+  Args:
+    MinJumpTableEntries:
+      Value: [0, 2, 4, 8, 16, 32]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: callsite
+  Pass: inline
+  Args:
+    ForceInline:
+      Type: bool
+---
+CodeRegion:
+  CodeRegionType: other
+  Pass: all
+  Args:
+    OptPass:
+      Type: selection
+      Value: [ipsccp, globalopt, mem2reg, deadargelim, instcombine, simplifycfg, prune-eh, inline, functionattrs,
+      argpromotion, sroa, jump-threading, simplifycfg, aggressive-instcombine, instcombine, tailcallelim, simplifycfg,
+      reassociate, loop-simplify, lcssa, loop-rotate, licm, loop-unswitch, simplifycfg, instcombine, loop-simplify,
+      lcssa, indvars, loop-deletion, loop-unroll, gvn, memcpyopt, sccp, instcombine, jump-threading, dse, loop-simplify,
+      lcssa, licm, simplifycfg, instcombine, globalopt, globaldce, loop-simplify, lcssa, loop-rotate, loop-simplify, instcombine,
+      simplifycfg, instcombine, loop-simplify, lcssa, loop-unroll, instcombine, loop-simplify, lcssa, licm, strip-dead-prototypes,
+      globaldce, constmerge, loop-simplify, lcssa, simplifycfg]
+---
+CodeRegion:
+  CodeRegionType: program-param
+  Pass: none
+  Args:
+    -adce-remove-control-flow:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/ADCE.cpp
+      Category: Transforms
+      Pass: [adce]
+---
+CodeRegion:
+  CodeRegionType: llvm-param
+  Pass: none
+  Args:
+    -adce-remove-loops:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/ADCE.cpp
+      Category: Transforms
+      Pass: [adce]
+    -addr-sink-combine-base-gv:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-combine-base-offs:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-combine-base-reg:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-combine-scaled-reg:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-new-phis:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-new-select:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -addr-sink-using-gep:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -aggressive-ext-opt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -align-neon-spills:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/ARM/ARMFrameLowering.cpp
+      Category: Target-ARM
+      Pass: [arm-frame-lowering]
+    -allow-unroll-and-jam:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollAndJamPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll-and-jam]
+    -aarch64-enable-mgather-combine:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64ISelLowering.cpp
+      Category: Target-AArch64
+      Pass: [aarch64-lower]
+    -aarch64-order-frame-objects:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64FrameLowering.cpp
+      Category: Target-AArch64
+      Pass: [frame-info]
+    -atomic-counter-update-promoted:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -atomic-first-counter:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -attributor-allow-deep-wrappers:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/Attributor.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -attributor-allow-shallow-wrappers:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/Attributor.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -attributor-annotate-decl-cs:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/Attributor.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -attributor-manifest-internal:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/AttributorAttributes.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -avoid-speculation:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineLICM.cpp
+      Category: CodeGen
+      Pass: [machinelicm]
+    -basic-aa-recphi:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/BasicAliasAnalysis.cpp
+      Category: Analysis
+      Pass: [basicaa]
+    -bounds-checking-single-trap:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/BoundsChecking.cpp
+      Category: Transforms
+      Pass: [bounds-checking]
+    -branch-fold-placement:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -cgp-icmp-eq2icmp-st:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -cgp-optimize-phi-types:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -cgp-split-large-offset-gep:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -cgp-type-promotion-merge:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -combiner-reduce-load-op-store-width:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-shrink-load-replace-store-with-store:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-split-load-index:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-store-merging:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-stress-load-slicing:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-use-tbaa:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -compute-dead:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -consthoist-gep:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/ConstantHoisting.cpp
+      Category: Transforms
+      Pass: [consthoist]
+    -consthoist-with-block-frequency:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/ConstantHoisting.cpp
+      Category: Transforms
+      Pass: [consthoist]
+    -costmodel-reduxcost:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/TargetTransformInfo.cpp
+      Category: Analysis
+      Pass: [tti]
+    -da-delinearize:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/DependenceAnalysis.cpp
+      Category: Analysis
+      Pass: [da]
+    -da-disable-delinearization-checks:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/DependenceAnalysis.cpp
+      Category: Analysis
+      Pass: [da]
+    -ddg-simplify:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/DDG.cpp
+      Category: Analysis
+      Pass: [ddg]
+    -ddg-pi-blocks:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/DDG.cpp
+      Category: Analysis
+      Pass: [ddg]
+    -demote-catchswitch-only:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/WinEHPrepare.cpp
+      Category: CodeGen
+      Pass: [winehprepare]
+    -disable-2addr-hack:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp
+      Category: CodeGen
+      Pass: [pre-RA-sched]
+    -disable-adv-copy-opt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -disable-basic-aa:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/AliasAnalysis.cpp
+      Category: Analysis
+      Pass: [aa]
+    -disable-binop-extract-shuffle:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/VectorCombine.cpp
+      Category: Transforms
+      Pass: [vector-combine]
+    -disable-block-placement:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-branch-fold:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-cgp-branch-opts:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-cgp-ext-ld-promotion:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-cgp-gc-opts:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-cgp-select2branch:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-cgp-store-extract:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-cgp:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-cleanups:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/WinEHPrepare.cpp
+      Category: CodeGen
+      Pass: [winehprepare]
+    -disable-complex-addr-modes:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-constant-hoisting:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-copyprop:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-demotion:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/WinEHPrepare.cpp
+      Category: CodeGen
+      Pass: [winehprepare]
+    -disable-dfa-sched:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/ResourcePriorityQueue.cpp
+      Category: CodeGen
+      Pass: [scheduler]
+    -disable-early-ifcvt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-early-taildup:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-gep-const-evaluation:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -disable-icp:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/IndirectCallPromotion.cpp
+      Category: Transforms
+      Pass: [pgo-icall-prom]
+    -disable-ifcvt-diamond:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-forked-diamond:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-simple-false:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-simple:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-triangle-false:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-triangle-rev:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-ifcvt-triangle:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -disable-lsr:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-machine-cse:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-machine-dce:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-machine-licm:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-machine-sink:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-memop-opt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -disable-mergeicmps:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-nofree-inference:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/FunctionAttrs.cpp
+      Category: Transforms
+      Pass: [function-attrs]
+    -disable-non-allocatable-phys-copy-opt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -disable-nounwind-inference:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/FunctionAttrs.cpp
+      Category: Transforms
+      Pass: [function-attrs]
+    -disable-partial-libcall-inlining:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-peephole:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -disable-phi-elim-edge-splitting:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PHIElimination.cpp
+      Category: CodeGen
+      Pass: [phi-node-elimination]
+    -disable-post-ra:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-postra-machine-licm:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-postra-machine-sink:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -disable-preheader-prot:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -disable-vector-combine:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/VectorCombine.cpp
+      Category: Transforms
+      Pass: [vector-combine]
+    -enable-epilogue-vectorization:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -enable-knowledge-retention:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/AssumeBundleBuilder.cpp
+      Category: Transforms
+      Pass: [assume-builder]
+    -enable-linkonceodr-ir-outlining:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/IROutliner.cpp
+      Category: Transforms
+      Pass: [iroutliner]
+    -enable-npm-pgo-inline-deferral:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Passes/PassBuilderPipelines.cpp
+      Category: Passes
+      Pass: [none]
+    -enable-split-backedge-in-load-pre:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/GVN.cpp
+      Category: Transforms
+      Pass: [gvn]
+    -fixup-allow-gcptr-in-csr:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/FixupStatepointCallerSaved.cpp
+      Category: CodeGen
+      Pass: [fixup-statepoint-caller-saved]
+    -fixup-scs-enable-copy-propagation:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/FixupStatepointCallerSaved.cpp
+      Category: CodeGen
+      Pass: [fixup-statepoint-caller-saved]
+    -fixup-scs-extend-slot-size:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/FixupStatepointCallerSaved.cpp
+      Category: CodeGen
+      Pass: [fixup-statepoint-caller-saved]
+    -force-fast-cluster:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineScheduler.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -forward-switch-cond:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/SimplifyCFGPass.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -fuse-matrix:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LowerMatrixIntrinsics.cpp
+      Category: Transforms
+      Pass: [lower-matrix-intrinsics]
+    -fuse-matrix-use-loops:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LowerMatrixIntrinsics.cpp
+      Category: Transforms
+      Pass: [lower-matrix-intrinsics]
+    -gcov-atomic-counter:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/GCOVProfiling.cpp
+      Category: Transforms
+      Pass: [insert-gcov-profiling]
+    -generate-arange-section:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/AsmPrinter/DwarfDebug.cpp
+      Category: CodeGen
+      Pass: [dwarfdebug]
+    -generate-type-units:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/AsmPrinter/DwarfDebug.cpp
+      Category: CodeGen
+      Pass: [dwarfdebug]
+    -global-merge-group-by-use:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/GlobalMerge.cpp
+      Category: CodeGen
+      Pass: [global-merge]
+    -global-merge-ignore-single-use:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/GlobalMerge.cpp
+      Category: CodeGen
+      Pass: [global-merge]
+    -global-merge-on-const:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/GlobalMerge.cpp
+      Category: CodeGen
+      Pass: [global-merge]
+    -guard-widening-widen-branch-guards:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/GuardWidening.cpp
+      Category: Transforms
+      Pass: [guard-widening]
+    -hash-based-counter-split:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -hoist-cheap-insts:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineLICM.cpp
+      Category: CodeGen
+      Pass: [machinelicm]
+    -hoist-const-stores:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineLICM.cpp
+      Category: CodeGen
+      Pass: [machinelicm]
+    -hot-cold-static-analysis:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/HotColdSplitting.cpp
+      Category: Transforms
+      Pass: [hotcoldsplit]
+    -icp-call-only:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/IndirectCallPromotion.cpp
+      Category: Transforms
+      Pass: [pgo-icall-prom]
+    -icp-invoke-only:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/IndirectCallPromotion.cpp
+      Category: Transforms
+      Pass: [pgo-icall-prom]
+    -icp-lto:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/IndirectCallPromotion.cpp
+      Category: Transforms
+      Pass: [pgo-icall-prom]
+    -icp-samplepgo:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/IndirectCallPromotion.cpp
+      Category: Transforms
+      Pass: [pgo-icall-prom]
+    -ifcvt-branch-fold:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/IfConversion.cpp
+      Category: CodeGen
+      Pass: [if-converter]
+    -indvars-post-increment-ranges:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+      Category: Transforms
+      Pass: [indvars]
+    -indvars-predicate-loops:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+      Category: Transforms
+      Pass: [indvars]
+    -indvars-widen-indvars:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+      Category: Transforms
+      Pass: [indvars]
+    -inline-caller-superset-nobuiltin:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -inline-cost-full:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -inline-enable-cost-benefit-analysis:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -inline-remark-attribute:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/InlineAdvisor.cpp
+      Category: Analysis
+      Pass: [inline]
+    -instcombine-code-sinking:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/InstCombine/InstructionCombining.cpp
+      Category: Transforms
+      Pass: [instcombine]
+    -instcombine-negator-enabled:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/InstCombine/InstCombineNegator.cpp
+      Category: Transforms
+      Pass: [instcombine]
+    -instrprof-atomic-counter-update-all:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -interleave-loops:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -interleave-small-loop-scalar-reduction:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -ipt-expensive-asserts:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/InstructionPrecedenceTracking.cpp
+      Category: Analysis
+      Pass: [ipt]
+    -irce-allow-narrow-latch:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/InductiveRangeCheckElimination.cpp
+      Category: Transforms
+      Pass: [irce]
+    -irce-allow-unsigned-latch:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/InductiveRangeCheckElimination.cpp
+      Category: Transforms
+      Pass: [irce]
+    -irce-skip-profitability-checks:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/InductiveRangeCheckElimination.cpp
+      Category: Transforms
+      Pass: [irce]
+    -join-liveintervals:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -join-splitedges:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -jump-is-expensive:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetLoweringBase.cpp
+      Category: CodeGen
+      Pass: [none]
+    -jump-threading-across-loop-headers:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/JumpThreading.cpp
+      Category: Transforms
+      Pass: [jump-threading]
+    -licm-control-flow-hoisting:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LICM.cpp
+      Category: Transforms
+      Pass: [licm]
+    -loop-distribute-non-if-convertible:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopDistribute.cpp
+      Category: Transforms
+      Pass: [loop-distribute]
+    -loop-flatten-assume-no-overflow:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopFlatten.cpp
+      Category: Transforms
+      Pass: [loop-flatten]
+    -loop-flatten-widen-iv:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopFlatten.cpp
+      Category: Transforms
+      Pass: [loop-flatten]
+    -loop-predication-enable-count-down-loop:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopPredication.cpp
+      Category: Transforms
+      Pass: [loop-predication]
+    -loop-predication-enable-iv-truncation:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopPredication.cpp
+      Category: Transforms
+      Pass: [loop-predication]
+    -loop-predication-predicate-widenable-branches-to-deopt:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopPredication.cpp
+      Category: Transforms
+      Pass: [loop-predication]
+    -loop-predication-skip-profitability-checks:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopPredication.cpp
+      Category: Transforms
+      Pass: [loop-predication]
+    -loop-prefetch-writes:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopDataPrefetch.cpp
+      Category: Transforms
+      Pass: [loop-data-prefetch]
+    -loop-rotate-multi:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/LoopRotationUtils.cpp
+      Category: Transforms
+      Pass: [loop-rotate]
+    -loop-vectorize-with-block-frequency:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -loop-version-annotate-no-alias:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/LoopVersioning.cpp
+      Category: Transforms
+      Pass: [loop-versioning]
+    -lower-interleaved-accesses:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/InterleavedAccessPass.cpp
+      Category: CodeGen
+      Pass: [interleaved-access]
+    -lowertypetests-avoid-reuse:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/LowerTypeTests.cpp
+      Category: Transforms
+      Pass: [lowertypetests]
+    -lsr-exp-narrow:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp
+      Category: Transforms
+      Pass: [loop-reduce]
+    -lsr-filter-same-scaled-reg:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp
+      Category: Transforms
+      Pass: [loop-reduce]
+    -lsr-insns-cost:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp
+      Category: Transforms
+      Pass: [loop-reduce]
+    -machine-sink-bfi:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineSink.cpp
+      Category: CodeGen
+      Pass: [machine-sink]
+    -machine-sink-split:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineSink.cpp
+      Category: CodeGen
+      Pass: [machine-sink]
+    -mandatory-inlining-first:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Passes/PassBuilderPipelines.cpp
+      Category: Passes
+      Pass: [none]
+    -matrix-allow-contract:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LowerMatrixIntrinsics.cpp
+      Category: Transforms
+      Pass: [lower-matrix-intrinsics]
+    -memprof-instrument-atomics:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/MemProfiler.cpp
+      Category: Transforms
+      Pass: [memprof]
+    -memprof-instrument-reads:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/MemProfiler.cpp
+      Category: Transforms
+      Pass: [memprof]
+    -memprof-instrument-writes:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/MemProfiler.cpp
+      Category: Transforms
+      Pass: [memprof]
+    -memprof-use-callbacks:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/MemProfiler.cpp
+      Category: Transforms
+      Pass: [memprof]
+    -mergefunc-use-aliases:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/MergeFunctions.cpp
+      Category: Transforms
+      Pass: [mergefunc]
+    -misched-cluster:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineScheduler.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -misched-cyclicpath:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineScheduler.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -misched-fusion:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MacroFusion.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -misched-postra:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/TargetPassConfig.cpp
+      Category: CodeGen
+      Pass: [none]
+    -misched-regpressure:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineScheduler.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -openmp-opt-enable-merging:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/OpenMPOpt.cpp
+      Category: Transforms
+      Pass: [openmp-opt]
+    -pbqp-coalescing:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/RegAllocPBQP.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -pgo-instr-memop:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp
+      Category: Transforms
+      Pass: [pgo-instrumentation]
+    -pgo-instr-select:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp
+      Category: Transforms
+      Pass: [pgo-instrumentation]
+    -pgo-memop-optimize-memcmp-bcmp:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -pgo-memop-scale-count:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -pgso-cold-code-only:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso-cold-code-only-for-instr-pgo:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso-cold-code-only-for-partial-sample-pgo:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso-cold-code-only-for-sample-pgo:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso-lwss-only:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -phi-elim-split-all-critical-edges:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PHIElimination.cpp
+      Category: CodeGen
+      Pass: [phi-node-elimination]
+    -poison-checking-function-local:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/PoisonChecking.cpp
+      Category: Transforms
+      Pass: [poison-checking]
+    -post-RA-scheduler:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/PostRASchedulerList.cpp
+      Category: CodeGen
+      Pass: [post-RA-sched]
+    -precise-rotation-cost:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -precompute-phys-liveness:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/LiveIntervals.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -prefer-inloop-reductions:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -prefer-predicated-reduction-select:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -preserve-alignment-assumptions-during-inlining:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/InlineFunction.cpp
+      Category: Transforms
+      Pass: [none]
+    -profile-accurate-for-symsinlist:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -profile-guided-section-prefix:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -profile-sample-accurate:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -protect-from-escaped-allocas:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/StackColoring.cpp
+      Category: CodeGen
+      Pass: [stack-coloring]
+    -restrict-statepoint-remat:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/InlineSpiller.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -reverse-csr-restore-seq:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Target/AArch64/AArch64FrameLowering.cpp
+      Category: Target-AArch64
+      Pass: [frame-info]
+    -rs4gc-allow-statepoint-with-no-deopt-info:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/RewriteStatepointsForGC.cpp
+      Category: Transforms
+      Pass: [rewrite-statepoints-for-gc]
+    -rs4gc-clobber-non-live:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/RewriteStatepointsForGC.cpp
+      Category: Transforms
+      Pass: [rewrite-statepoints-for-gc]
+    -runtime-counter-relocation:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -safe-stack-coloring:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SafeStack.cpp
+      Category: CodeGen
+      Pass: [safe-stack]
+    -safe-stack-layout:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/SafeStackLayout.cpp
+      Category: CodeGen
+      Pass: [safestacklayout]
+    -safestack-use-pointer-address:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/SafeStack.cpp
+      Category: CodeGen
+      Pass: [safe-stack]
+    -sample-profile-inline-size:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -sample-profile-merge-inlinee:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -sample-profile-top-down-load:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -scalar-evolution-classify-expressions:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-use-expensive-range-sharpening:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalarize-load-store:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/Scalarizer.cpp
+      Category: Transforms
+      Pass: [scalarizer]
+    -scalarize-variable-insert-extract:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/Scalarizer.cpp
+      Category: Transforms
+      Pass: [scalarizer]
+    -scheditins:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/TargetSchedule.cpp
+      Category: CodeGen
+      Pass: [none]
+    -schedmodel:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/TargetSchedule.cpp
+      Category: CodeGen
+      Pass: [none]
+    -simple-loop-unswitch-drop-non-trivial-implicit-null-checks:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/SimpleLoopUnswitch.cpp
+      Category: Transforms
+      Pass: [simple-loop-unswitch]
+    -simple-loop-unswitch-guards:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/SimpleLoopUnswitch.cpp
+      Category: Transforms
+      Pass: [simple-loop-unswitch]
+    -simplifycfg-hoist-cond-stores:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -simplifycfg-merge-cond-stores-aggressively:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -simplifycfg-merge-cond-stores:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -simplifycfg-sink-common:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -sink-insts-to-avoid-spills:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineSink.cpp
+      Category: CodeGen
+      Pass: [machine-sink]
+    -slp-vectorize-hor-store:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -slp-vectorize-hor:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -spec-exec-only-if-divergent-target:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/SpeculativeExecution.cpp
+      Category: Transforms
+      Pass: [speculative-execution]
+    -speculate-one-expensive-inst:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -sroa-strict-inbounds:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/SROA.cpp
+      Category: Transforms
+      Pass: [sroa]
+    -stackcoloring-lifetime-start-on-first-use:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/StackColoring.cpp
+      Category: CodeGen
+      Pass: [stack-coloring]
+    -stack-safety-run:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/StackSafetyAnalysis.cpp
+      Category: Analysis
+      Pass: [stack-safety]
+    -stack-tagging-first-slot-opt:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64StackTaggingPreRA.cpp
+      Category: Target-AArch64
+      Pass: [aarch64-stack-tagging-pre-ra]
+    -stack-tagging-merge-init:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64StackTagging.cpp
+      Category: Target-AArch64
+      Pass: [aarch64-stack-tagging]
+    -stack-tagging-merge-settag:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64FrameLowering.cpp
+      Category: Target-AArch64
+      Pass: [frame-info]
+    -stack-tagging-use-stack-safety:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Target/AArch64/AArch64StackTagging.cpp
+      Category: Target-AArch64
+      Pass: [aarch64-stack-tagging]
+    -store-to-load-forwarding-conflict-detection:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/LoopAccessAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-accesses]
+    -stress-cgp-ext-ld-promotion:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -stress-cgp-store-extract:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -stress-early-ifcvt:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/EarlyIfConversion.cpp
+      Category: CodeGen
+      Pass: [early-ifcvt]
+    -stress-ivchain:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp
+      Category: Transforms
+      Pass: [loop-reduce]
+    -stress-sched:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/ScheduleDAG.cpp
+      Category: CodeGen
+      Pass: [pre-RA-sched]
+    -structurizecfg-relaxed-uniform-regions:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/StructurizeCFG.cpp
+      Category: Transforms
+      Pass: [structurizecfg]
+    -structurizecfg-skip-uniform-regions:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/StructurizeCFG.cpp
+      Category: Transforms
+      Pass: [structurizecfg]
+    -switch-to-lookup:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/SimplifyCFGPass.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -tail-dup-placement:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -terminal-rule:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -trap-unreachable:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/LLVMTargetMachine.cpp
+      Category: CodeGen
+      Pass: [none]
+    -twoaddr-reschedule:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/TwoAddressInstructionPass.cpp
+      Category: CodeGen
+      Pass: [twoaddressinstruction]
+    -unroll-allow-loop-nests-peeling:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Utils/LoopPeel.cpp
+      Category: Transforms
+      Pass: [loop-peel]
+    -unroll-allow-partial:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-allow-peeling:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Utils/LoopPeel.cpp
+      Category: Transforms
+      Pass: [loop-peel]
+    -unroll-allow-remainder:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-remainder:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-revisit-child-loops:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-runtime:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -use-registers-for-deopt-values:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/StatepointLowering.cpp
+      Category: CodeGen
+      Pass: [statepoint-lowering]
+    -use-registers-for-gc-values-in-landing-pad:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/StatepointLowering.cpp
+      Category: CodeGen
+      Pass: [statepoint-lowering]
+    -vectorize-loops:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -vectorize-slp:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -vp-static-alloc:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -whole-program-visibility:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/WholeProgramDevirt.cpp
+      Category: Transforms
+      Pass: [wholeprogramdevirt]
+    -break-anti-dependencies:
+      Type: enum
+      Value: [none, critical, all]
+      Default: none
+      Location: llvm/lib/CodeGen/PostRASchedulerList.cpp
+      Category: CodeGen
+      Pass: [post-RA-sched]
+    -cost-kind:
+      Type: enum
+      Value: [throughput, latency, code-size]
+      Default: throughput
+      Location: llvm/lib/Analysis/CostModel.cpp
+      Category: Analysis
+      Pass: [cost-model]
+    -disable-hoisting-to-hotter-blocks:
+      Type: enum
+      Value: [none, pgo, all]
+      Default: pgo
+      Location: llvm/lib/CodeGen/MachineLICM.cpp
+      Category: CodeGen
+      Pass: [machinelicm]
+    -loop-fusion-dependence-analysis:
+      Type: enum
+      Value: [all, da, scev]
+      Default: all
+      Location: llvm/lib/Transforms/Scalar/LoopFuse.cpp
+      Category: Transforms
+      Pass: [loop-fusion]
+    -replexitval:
+      Type: enum
+      Value: [never, cheap, noharduse, always]
+      Default: cheap
+      Location: llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+      Category: Transforms
+      Pass: [indvars]
+    -split-spill-mode:
+      Type: enum
+      Value: [default, size, speed]
+      Default: speed
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -chr-bias-threshold:
+      Type: enum
+      Value: [0, 0.1, 0.3, 0.5, 0.9, 0.99]
+      Default: 0.99
+      Location: llvm/lib/Transforms/Instrumentation/ControlHeightReduction.cpp
+      Category: Transforms
+      Pass: [chr]
+    -import-cold-multiplier:
+      Type: enum
+      Value: [0, 0.5, 1]
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -import-critical-multiplier:
+      Type: enum
+      Value: [0, 50, 100, 150, 200]
+      Default: 100
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -import-hot-evolution-factor:
+      Type: enum
+      Value: [0, 0.3, 0.5, 0.7, 1]
+      Default: 1.0
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -import-hot-multiplier:
+      Type: enum
+      Value: [0, 1, 3, 10, 20, 50]
+      Default: 10
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -import-instr-evolution-factor:
+      Type: enum
+      Value: [0, 0.3, 0.5, 0.7, 1]
+      Default: 0.7
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -licm-versioning-invariant-threshold:
+      Type: enum
+      Value: [0, 30, 50, 70, 90, 100]
+      Default: 25
+      Location: llvm/lib/Transforms/Scalar/LoopVersioningLICM.cpp
+      Category: Transforms
+      Pass: [loop-versioning-licm]
+    -loop-predication-latch-probability-scale:
+      Type: enum
+      Value: [1, 2, 3, 4, 5]
+      Default: 2
+      Location: llvm/lib/Transforms/Scalar/LoopPredication.cpp
+      Category: Transforms
+      Pass: [loop-predication]
+    -vp-counters-per-site:
+      Type: enum
+      Value: [0, 1, 3, 10, 32, 64, 128, 256]
+      Default: 1
+      Location: llvm/lib/Transforms/Instrumentation/InstrProfiling.cpp
+      Category: Transforms
+      Pass: [instrprof]
+    -inline-cold-callsite-threshold:
+      Type: enum
+      Value: [0, 10, 20, 30, 40, 45, 50, 60, 70, 80, 90, 100]
+      Default: 45
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -inlinecold-threshold:
+      Type: enum
+      Value: [0, 15, 30, 45, 60, 75, 90]
+      Default: 45
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -inlinehint-threshold:
+      Type: enum
+      Value: [0, 100, 200, 300, 325, 400, 500, 600]
+      Default: 325
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -instcombine-guard-widening-window:
+      Type: enum
+      Value: [0, 1, 2, 3, 4, 5]
+      Default: 3
+      Location: llvm/lib/Transforms/InstCombine/InstCombineCalls.cpp
+      Category: Transforms
+      Pass: [instcombine]
+    -instcombine-max-num-phis:
+      Type: enum
+      Value: [256, 512, 1024]
+      Default: 512
+      Location: llvm/lib/Transforms/InstCombine/InstCombinePHI.cpp
+      Category: Transforms
+      Pass: [instcombine]
+    -instcombine-maxarray-size:
+      Type: enum
+      Value: [256, 512, 1024, 2048, 4096]
+      Default: 1024
+      Location: llvm/lib/Transforms/InstCombine/InstructionCombining.cpp
+      Category: Transforms
+      Pass: [instcombine]
+    -irce-loop-size-cutoff:
+      Type: enum
+      Value: [16, 32, 64, 128, 256]
+      Default: 64
+      Location: llvm/lib/Transforms/Scalar/InductiveRangeCheckElimination.cpp
+      Category: Transforms
+      Pass: [irce]
+    -jump-inst-cost:
+      Type: enum
+      Value: [1, 2, 3, 4, 5]
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -jump-table-density:
+      Type: enum
+      Value: [0, 10, 20, 30, 40, 50]
+      Default: 10
+      Location: llvm/lib/CodeGen/TargetLoweringBase.cpp
+      Category: CodeGen
+      Pass: [none]
+    -jump-threading-threshold:
+      Type: enum
+      Value: [0, 3, 6, 9, 12, 15]
+      Default: 6
+      Location: llvm/lib/Transforms/Scalar/JumpThreading.cpp
+      Category: Transforms
+      Pass: [jump-threading]
+    -icp-max-annotations:
+      Type: enum
+      Value: [0, 1, 2, 3, 4, 5]
+      Default: 3
+      Location: llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp
+      Category: Transforms
+      Pass: [pgo-instrumentation]
+    -icp-max-prom:
+      Type: enum
+      Value: [0, 1, 2, 3, 4, 5]
+      Default: 3
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -icp-remaining-percent-threshold:
+      Type: enum
+      Value: [0, 10, 20, 30, 40, 50, 60]
+      Default: 30
+      Location: llvm/lib/Analysis/IndirectCallPromotionAnalysis.cpp
+      Category: Analysis
+      Pass: [pgo-icall-prom-analysis]
+    -icp-total-percent-threshold:
+      Type: enum
+      Value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      Default: 5
+      Location: llvm/lib/Analysis/IndirectCallPromotionAnalysis.cpp
+      Category: Analysis
+      Pass: [pgo-icall-prom-analysis]
+    -attributor-max-iterations:
+      Type: enum
+      Value: [8, 16, 32, 64, 128]
+      Default: 32
+      Location: llvm/lib/Transforms/IPO/Attributor.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -min-jump-table-entries:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32]
+      Default: 4
+      Location: llvm/lib/CodeGen/TargetLoweringBase.cpp
+      Category: CodeGen
+      Pass: [none]
+    -min-prefetch-stride:
+      Type: enum
+      Value: [0, 1, 2, 4, 8, 16, 32]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopDataPrefetch.cpp
+      Category: Transforms
+      Pass: [loop-data-prefetch]
+    -misched-limit:
+      Type: enum
+      Value: [32, 64, 128, 256, 512]
+      Default: 256
+      Location: llvm/lib/CodeGen/MachineScheduler.cpp
+      Category: CodeGen
+      Pass: [machine-scheduler]
+    -misfetch-cost:
+      Type: enum
+      Value: [0, 1, 2, 4, 8]
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -optsize-jump-table-density:
+      Type: enum
+      Value: [10, 20, 30, 40, 50, 60, 70, 80]
+      Default: 40
+      Location: llvm/lib/CodeGen/TargetLoweringBase.cpp
+      Category: CodeGen
+      Pass: [none]
+    -pgo-memop-count-threshold:
+      Type: enum
+      Value: [1, 10, 100, 500, 1000, 5000]
+      Default: 1000
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -pgo-memop-max-version:
+      Type: enum
+      Value: [1, 3, 5, 7]
+      Default: 3
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -pgo-memop-percent-threshold:
+      Type: enum
+      Value: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+      Default: 40
+      Location: llvm/lib/Transforms/Instrumentation/PGOMemOPSizeOpt.cpp
+      Category: Transforms
+      Pass: [pgo-memop-opt]
+    -pgso-cutoff-instr-prof:
+      Type: enum
+      Value: [50000, 100000, 250000, 500000, 950000, 1000000]
+      Default: 950000
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -pgso-cutoff-sample-prof:
+      Type: enum
+      Value: [100000, 400000, 800000, 990000, 1250000, 2000000]
+      Default: 990000
+      Location: llvm/lib/Transforms/Utils/SizeOpts.cpp
+      Category: Transforms
+      Pass: [none]
+    -phi-node-folding-threshold:
+      Type: enum
+      Value: [1, 2, 4, 8, 16]
+      Default: 2
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -pipeliner-max-mii:
+      Type: enum
+      Value: [-1, 9, 18, 27, 36, 45]
+      Default: 27
+      Location: llvm/lib/CodeGen/MachinePipeliner.cpp
+      Category: CodeGen
+      Pass: [pipeliner]
+    -pipeliner-max-stages:
+      Type: enum
+      Value: [-1, 1, 3, 5, 10]
+      Default: 3
+      Location: llvm/lib/CodeGen/MachinePipeliner.cpp
+      Category: CodeGen
+      Pass: [pipeliner]
+    -pragma-unroll-and-jam-threshold:
+      Type: enum
+      Value: [128, 256, 512, 1024, 2048, 4096]
+      Default: 1024
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollAndJamPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll-and-jam]
+    -pragma-unroll-threshold:
+      Type: enum
+      Value: [2048, 4096, 8192, 16384, 32768, 65536]
+      Default: 16384
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -pragma-vectorize-scev-check-threshold:
+      Type: enum
+      Value: [32, 64, 128, 256, 512]
+      Default: 128
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorizationLegality.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -prefetch-distance:
+      Type: enum
+      Value: [0, 50, 100, 500, 1000]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopDataPrefetch.cpp
+      Category: Transforms
+      Pass: [loop-data-prefetch]
+    -profile-likely-prob:
+      Type: enum
+      Value: [5, 30, 51, 75]
+      Default: 51
+      Location: llvm/lib/CodeGen/MachineBranchProbabilityInfo.cpp
+      Category: CodeGen
+      Pass: [machine-branch-prob]
+    -rdf-liveness-max-rec:
+      Type: enum
+      Value: [0, 10, 25, 40, 75, 100]
+      Default: 25
+      Location: llvm/lib/CodeGen/RDFLiveness.cpp
+      Category: CodeGen
+      Pass: [none]
+    -recurrence-chain-limit:
+      Type: enum
+      Value: [1, 2, 3, 4, 5]
+      Default: 3
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -regalloc-csr-first-time-cost:
+      Type: enum
+      Value: [0, 5, 10, 15, 50, 100, 250, 500, 750, 1000]
+      Default: 0
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -rewrite-phi-limit:
+      Type: enum
+      Value: [1, 5, 10, 25, 50, 100]
+      Default: 10
+      Location: llvm/lib/CodeGen/PeepholeOptimizer.cpp
+      Category: CodeGen
+      Pass: [peephole-opt]
+    -rotation-max-header-size:
+      Type: enum
+      Value: [2, 4, 8, 16, 32, 64, 128]
+      Default: 16
+      Location: llvm/lib/Transforms/Scalar/LoopRotation.cpp
+      Category: Transforms
+      Pass: [loop-rotate]
+    -runtime-check-per-loop-load-elim:
+      Type: enum
+      Value: [0, 1, 2, 3, 4, 5]
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LoopLoadElimination.cpp
+      Category: Transforms
+      Pass: [loop-load-elim]
+    -runtime-memory-check-threshold:
+      Type: enum
+      Value: [0, 4, 8, 16, 24, 32]
+      Default: 8
+      Location: llvm/lib/Analysis/LoopAccessAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-accesses]
+    -sample-profile-cold-inline-threshold:
+      Type: enum
+      Value: [0, 20, 45, 100, 999999999]
+      Default: 45
+      Location: llvm/lib/Transforms/IPO/SampleProfile.cpp
+      Category: Transforms
+      Pass: [sample-profile]
+    -sample-profile-max-propagate-iterations:
+      Type: enum
+      Value: [1, 20, 60, 100, 200, 500]
+      Default: 100
+      Location: llvm/lib/Transforms/Utils/SampleProfileLoaderBaseUtil.cpp
+      Category: Transforms
+      Pass: [none]
+    -switch-peel-threshold:
+      Type: enum
+      Value: [10, 25, 45, 66, 95, 101]
+      Default: 66
+      Location: llvm/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp
+      Category: CodeGen
+      Pass: [isel]
+    -tail-dup-indirect-size:
+      Type: enum
+      Value: [5, 10, 20, 50]
+      Default: 20
+      Location: llvm/lib/CodeGen/TailDuplicator.cpp
+      Category: CodeGen
+      Pass: [tailduplication]
+    -tail-dup-placement-aggressive-threshold:
+      Type: enum
+      Value: [1, 2, 3, 5, 6, 9, 20, 30]
+      Default: 6
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -tail-dup-placement-penalty:
+      Type: enum
+      Value: [2, 5, 10, 25, 50, 85]
+      Default: 2
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -tail-dup-size:
+      Type: enum
+      Value: [1, 2, 5, 10, 20, 100, 1000]
+      Default: 2
+      Location: llvm/lib/CodeGen/TailDuplicator.cpp
+      Category: CodeGen
+      Pass: [tailduplication]
+    -tail-merge-size:
+      Type: enum
+      Value: [1, 2, 3, 4, 5, 10, 20, 100]
+      Default: 3
+      Location: llvm/lib/CodeGen/BranchFolding.cpp
+      Category: CodeGen
+      Pass: [branch-folder]
+    -tail-merge-threshold:
+      Type: enum
+      Value: [10, 50, 150, 300, 600, 1000]
+      Default: 150
+      Location: llvm/lib/CodeGen/BranchFolding.cpp
+      Category: CodeGen
+      Pass: [branch-folder]
+    -temporal-reuse-threshold:
+      Type: enum
+      Value: [0, 1, 2, 5, 10, 50]
+      Default: 2
+      Location: llvm/lib/Analysis/LoopCacheAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-cache-cost]
+    -two-entry-phi-node-folding-threshold:
+      Type: enum
+      Value: [1, 2, 3, 4, 5, 10, 25]
+      Default: 4
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -unlikely-branch-weight:
+      Type: enum
+      Value: [1, 5, 10, 50, 100]
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/LowerExpectIntrinsic.cpp
+      Category: Transforms
+      Pass: [lower-expect-intrinsic]
+    -unroll-and-jam-count:
+      Type: enum
+      Value: [0, 1, 2, 4, 8]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollAndJamPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll-and-jam]
+    -unroll-and-jam-threshold:
+      Type: enum
+      Value: [60, 256, 512, 1024]
+      Default: 60
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollAndJamPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll-and-jam]
+    -unroll-max-iteration-count-to-analyze:
+      Type: enum
+      Value: [10, 50, 100, 500]
+      Default: 10
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-max-percent-threshold-boost:
+      Type: enum
+      Value: [100, 200, 400, 1000]
+      Default: 400
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-max-upperbound:
+      Type: enum
+      Value: [0, 4, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-partial-threshold:
+      Type: enum
+      Value: [0, 75, 150, 300, 600]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unroll-threshold:
+      Type: enum
+      Value: [0, 75, 150, 300, 450]
+      Default: 300
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -unswitch-num-initial-unscaled-candidates:
+      Type: enum
+      Value: [0, 4, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/Transforms/Scalar/SimpleLoopUnswitch.cpp
+      Category: Transforms
+      Pass: [simple-loop-unswitch]
+    -unswitch-siblings-toplevel-div:
+      Type: enum
+      Value: [1, 2, 4, 8, 16]
+      Default: 2
+      Location: llvm/lib/Transforms/Scalar/SimpleLoopUnswitch.cpp
+      Category: Transforms
+      Pass: [simple-loop-unswitch]
+    -unswitch-threshold:
+      Type: enum
+      Value: [5, 50, 100, 500]
+      Default: 50
+      Location: llvm/lib/Transforms/Scalar/SimpleLoopUnswitch.cpp
+      Category: Transforms
+      Pass: [simple-loop-unswitch]
+    -vectorize-num-stores-pred:
+      Type: enum
+      Value: [0, 1, 2, 5, 10]
+      Default: 1
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -vectorize-scev-check-threshold:
+      Type: enum
+      Value: [4, 16, 64, 128]
+      Default: 16
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorizationLegality.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -wholeprogramdevirt-branch-funnel-threshold:
+      Type: enum
+      Value: [1, 10, 100, 500]
+      Default: 10
+      Location: llvm/lib/Transforms/IPO/WholeProgramDevirt.cpp
+      Category: Transforms
+      Pass: [wholeprogramdevirt]
+    -lcr-max-depth:
+      Type: enum
+      Value: [0, 5, 10, 20]
+      Default: 5
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -lcr-max-interf:
+      Type: enum
+      Value: [1, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -ldstmemcpy-glue-max:
+      Type: enum
+      Value: [0, 1, 2, 5, 10, 50]
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/SelectionDAG.cpp
+      Category: CodeGen
+      Pass: [selectiondag]
+    -licm-max-num-uses-traversed:
+      Type: enum
+      Value: [0, 4, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/Transforms/Scalar/LICM.cpp
+      Category: Transforms
+      Pass: [licm]
+    -licm-mssa-max-acc-promotion:
+      Type: enum
+      Value: [0, 50, 100, 250, 500]
+      Default: 250
+      Location: llvm/lib/Transforms/Scalar/LICM.cpp
+      Category: Transforms
+      Pass: [licm]
+    -licm-mssa-optimization-cap:
+      Type: enum
+      Value: [0, 50, 100, 200, 500]
+      Default: 100
+      Location: llvm/lib/Transforms/Scalar/LICM.cpp
+      Category: Transforms
+      Pass: [licm]
+    -licm-versioning-max-depth-threshold:
+      Type: enum
+      Value: [0, 1, 2, 4, 8, 16]
+      Default: 2
+      Location: llvm/lib/Transforms/Scalar/LoopVersioningLICM.cpp
+      Category: Transforms
+      Pass: [loop-versioning-licm]
+    -likely-branch-weight:
+      Type: enum
+      Value: [500, 1000, 2000, 3000]
+      Default: 2000
+      Location: llvm/lib/Transforms/Scalar/LowerExpectIntrinsic.cpp
+      Category: Transforms
+      Pass: [lower-expect-intrinsic]
+    -limit-float-precision:
+      Type: enum
+      Value: [0, 6, 12, 18, 24]
+      Default: 0
+      Location: llvm/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp
+      Category: CodeGen
+      Pass: [isel]
+    -locally-hot-callsite-threshold:
+      Type: enum
+      Value: [0, 250, 525, 1000]
+      Default: 525
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -loop-distribute-scev-check-threshold-with-pragma:
+      Type: enum
+      Value: [32, 64, 128, 256, 512]
+      Default: 128
+      Location: llvm/lib/Transforms/Scalar/LoopDistribute.cpp
+      Category: Transforms
+      Pass: [loop-distribute]
+    -loop-distribute-scev-check-threshold:
+      Type: enum
+      Value: [0, 4, 8, 16, 32, 64]
+      Default: 8
+      Location: llvm/lib/Transforms/Scalar/LoopDistribute.cpp
+      Category: Transforms
+      Pass: [loop-distribute]
+    -loop-interchange-threshold:
+      Type: enum
+      Value: [-100, 0, 10, 50, 100]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopInterchange.cpp
+      Category: Transforms
+      Pass: [loop-interchange]
+    -loop-load-elimination-scev-check-threshold:
+      Type: enum
+      Value: [0, 1, 4, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/Transforms/Scalar/LoopLoadElimination.cpp
+      Category: Transforms
+      Pass: [loop-load-elim]
+    -loop-to-cold-block-ratio:
+      Type: enum
+      Value: [0, 1, 2, 5, 10, 20]
+      Default: 5
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -slp-max-look-ahead-depth:
+      Type: enum
+      Value: [0, 1, 2, 4, 10]
+      Default: 2
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -slp-max-store-lookup:
+      Type: enum
+      Value: [0, 8, 16, 32, 64]
+      Default: 32
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -slp-min-tree-size:
+      Type: enum
+      Value: [3, 6, 16, 32]
+      Default: 3
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -slp-schedule-budget:
+      Type: enum
+      Value: [0, 1, 16, 30, 500, 100000]
+      Default: 100000
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -slp-threshold:
+      Type: enum
+      Value: [0, 10, 30, 100]
+      Default: 0
+      Location: llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+      Category: Transforms
+      Pass: [SLP]
+    -gvn-hoist-max-bbs:
+      Type: enum
+      Value: [-1, 0, 2, 4, 8, 16]
+      Default: 4
+      Location: llvm/lib/Transforms/Scalar/GVNHoist.cpp
+      Category: Transforms
+      Pass: [gvn-hoist]
+    -gvn-hoist-max-chain-length:
+      Type: enum
+      Value: [-1, 0, 2, 4, 10, 15]
+      Default: 10
+      Location: llvm/lib/Transforms/Scalar/GVNHoist.cpp
+      Category: Transforms
+      Pass: [gvn-hoist]
+    -gvn-hoist-max-depth:
+      Type: enum
+      Value: [-1, 0, 10, 50, 100, 200, 400]
+      Default: 100
+      Location: llvm/lib/Transforms/Scalar/GVNHoist.cpp
+      Category: Transforms
+      Pass: [gvn-hoist]
+    -gvn-max-hoisted:
+      Type: enum
+      Value: [-1, 5, 10, 50, 100]
+      Default: -1
+      Location: llvm/lib/Transforms/Scalar/GVNHoist.cpp
+      Category: Transforms
+      Pass: [gvn-hoist]
+    -gvn-max-num-deps:
+      Type: enum
+      Value: [0, 5, 10, 50, 100, 200]
+      Default: 100
+      Location: llvm/lib/Transforms/Scalar/GVN.cpp
+      Category: Transforms
+      Pass: [gvn]
+    -max-interleave-group-factor:
+      Type: enum
+      Value: [1, 4, 8, 16, 64, 128]
+      Default: 8
+      Location: llvm/lib/Analysis/VectorUtils.cpp
+      Category: Analysis
+      Pass: [vectorutils]
+    -scalar-evolution-huge-expr-threshold:
+      Type: enum
+      Value: [1, 128, 1048, 4096, 1000000]
+      Default: 4096
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-add-rec-size:
+      Type: enum
+      Value: [0, 1, 4, 8, 16, 32]
+      Default: 8
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-arith-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 32
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-cast-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 8
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-constant-evolving-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 32
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-iterations:
+      Type: enum
+      Value: [0, 42, 100, 150, 250]
+      Default: 100
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-scev-compare-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 32
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-scev-operations-implication-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 2
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scalar-evolution-max-value-compare-depth:
+      Type: enum
+      Value: [0, 2, 4, 8, 16, 32, 64]
+      Default: 2
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scev-addops-inline-threshold:
+      Type: enum
+      Value: [1, 10, 100, 500, 1000]
+      Default: 500
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -scev-mulops-inline-threshold:
+      Type: enum
+      Value: [1, 10, 32, 64, 128]
+      Default: 32
+      Location: llvm/lib/Analysis/ScalarEvolution.cpp
+      Category: Analysis
+      Pass: [scalar-evolution]
+    -small-loop-cost:
+      Type: enum
+      Value: [10, 20, 40, 100]
+      Default: 20
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -alias-set-saturation-threshold:
+      Type: enum
+      Value: [50, 150, 250, 350, 500]
+      Default: 250
+      Location: llvm/lib/Analysis/AliasSetTracker.cpp
+      Category: Analysis
+      Pass: [none]
+    -align-all-blocks:
+      Type: enum
+      Value: [0, 2, 3, 4, 5, 6]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -align-all-functions:
+      Type: enum
+      Value: [0, 2, 3, 4, 5, 6]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineFunction.cpp
+      Category: CodeGen
+      Pass: [codegen]
+    -align-all-nofallthru-blocks:
+      Type: enum
+      Value: [0, 2, 3, 4, 5, 6]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -arc-opt-max-ptr-states:
+      Type: enum
+      Value: [1023, 2047, 4095, 8191, 16383]
+      Default: 4095
+      Location: llvm/lib/Transforms/ObjCARC/ObjCARCOpts.cpp
+      Category: Transforms
+      Pass: [objc-arc-opts]
+    -available-load-scan-limit:
+      Type: enum
+      Value: [2, 4, 6, 8, 10]
+      Default: 6
+      Location: llvm/lib/Analysis/Loads.cpp
+      Category: Analysis
+      Pass: [none]
+    -block-freq-ratio-threshold:
+      Type: enum
+      Value: [20, 50, 100, 200, 500]
+      Default: 100
+      Location: llvm/lib/CodeGen/MachineLICM.cpp
+      Category: CodeGen
+      Pass: [machinelicm]
+    -bonus-inst-threshold:
+      Type: enum
+      Value: [1, 2, 4, 8, 16]
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/SimplifyCFGPass.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -callsite-splitting-duplication-threshold:
+      Type: enum
+      Value: [0, 5, 10, 100, 100000]
+      Default: 5
+      Location: llvm/lib/Transforms/Scalar/CallSiteSplitting.cpp
+      Category: Transforms
+      Pass: [callsite-splitting]
+    -cgp-freq-ratio-to-skip-merge:
+      Type: enum
+      Value: [2, 5, 10, 100]
+      Default: 2
+      Location: llvm/lib/CodeGen/CodeGenPrepare.cpp
+      Category: CodeGen
+      Pass: [codegenprepare]
+    -chr-merge-threshold:
+      Type: enum
+      Value: [2, 3, 4, 5, 6]
+      Default: 2
+      Location: llvm/lib/Transforms/Instrumentation/ControlHeightReduction.cpp
+      Category: Transforms
+      Pass: [chr]
+    -cold-callsite-rel-freq:
+      Type: enum
+      Value: [1, 2, 3, 4, 5]
+      Default: 2
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -cold-synthetic-count:
+      Type: enum
+      Value: [1, 3, 5, 7, 9]
+      Default: 5
+      Location: llvm/lib/Transforms/IPO/SyntheticCountsPropagation.cpp
+      Category: Transforms
+      Pass: [synthetic-counts-propagation]
+    -coldcc-rel-freq:
+      Type: enum
+      Value: [1, 2, 3, 4, 5]
+      Default: 2
+      Location: llvm/lib/Transforms/IPO/GlobalOpt.cpp
+      Category: Transforms
+      Pass: [globalopt]
+    -combiner-store-merge-dependence-limit:
+      Type: enum
+      Value: [5, 10, 20]
+      Default: 10
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -combiner-tokenfactor-inline-limit:
+      Type: enum
+      Value: [1024, 2048, 4096]
+      Default: 2048
+      Location: llvm/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+      Category: CodeGen
+      Pass: [dagcombine]
+    -cvp-max-functions-per-value:
+      Type: enum
+      Value: [2, 3, 4, 5]
+      Default: 4
+      Location: llvm/lib/Transforms/IPO/CalledValuePropagation.cpp
+      Category: Transforms
+      Pass: [called-value-propagation]
+    -dataflow-edge-limit:
+      Type: enum
+      Value: [2, 3, 4, 5, 6, 7]
+      Default: 3
+      Location: llvm/lib/CodeGen/TwoAddressInstructionPass.cpp
+      Category: CodeGen
+      Pass: [twoaddressinstruction]
+    -default-trip-count:
+      Type: enum
+      Value: [50, 100, 150, 200]
+      Default: 100
+      Location: llvm/lib/Analysis/LoopCacheAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-cache-cost]
+    -dfa-sched-reg-pressure-threshold:
+      Type: enum
+      Value: [2, 3, 4, 5, 6, 7]
+      Default: 5
+      Location: llvm/lib/CodeGen/SelectionDAG/ResourcePriorityQueue.cpp
+      Category: CodeGen
+      Pass: [scheduler]
+    -dom-conditions-max-uses:
+      Type: enum
+      Value: [10, 15, 20, 25, 30]
+      Default: 20
+      Location: llvm/lib/Analysis/ValueTracking.cpp
+      Category: Analysis
+      Pass: [none]
+    -early-ifcvt-limit:
+      Type: enum
+      Value: [30, 50, 100]
+      Default: 30
+      Location: llvm/lib/CodeGen/EarlyIfConversion.cpp
+      Category: CodeGen
+      Pass: [early-ifcvt]
+    -flat-loop-tripcount-threshold:
+      Type: enum
+      Value: [3, 5, 7, 9]
+      Default: 5
+      Location: llvm/lib/Transforms/Scalar/LoopUnrollPass.cpp
+      Category: Transforms
+      Pass: [loop-unroll]
+    -hot-callsite-rel-freq:
+      Type: enum
+      Value: [30, 60, 120, 200]
+      Default: 60
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -hot-callsite-threshold:
+      Type: enum
+      Value: [2000, 3000, 4000, 5000]
+      Default: 3000
+      Location: llvm/lib/Analysis/InlineCost.cpp
+      Category: Analysis
+      Pass: [inline-cost]
+    -hotcoldsplit-threshold:
+      Type: enum
+      Value: [2, 3, 4, 5]
+      Default: 2
+      Location: llvm/lib/Transforms/IPO/HotColdSplitting.cpp
+      Category: Transforms
+      Pass: [hotcoldsplit]
+    -imp-null-max-insts-to-consider:
+      Type: enum
+      Value: [0, 1, 4, 8, 16]
+      Default: 8
+      Location: llvm/lib/CodeGen/ImplicitNullChecks.cpp
+      Category: CodeGen
+      Pass: [implicit-null-checks]
+    -import-cutoff:
+      Type: enum
+      Value: [-1, 0, 1, 2, 5, 10]
+      Default: -1
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -import-instr-limit:
+      Type: enum
+      Value: [0, 20, 50, 100, 150, 200]
+      Default: 100
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]
+    -initial-synthetic-count:
+      Type: enum
+      Value: [0, 5, 10, 20, 50]
+      Default: 10
+      Location: llvm/lib/Transforms/IPO/SyntheticCountsPropagation.cpp
+      Category: Transforms
+      Pass: [synthetic-counts-propagation]
+    -large-interval-freq-threshold:
+      Type: enum
+      Value: [0, 10, 50, 100, 200]
+      Default: 100
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -large-interval-size-threshold:
+      Type: enum
+      Value: [0, 10, 50, 100, 200]
+      Default: 100
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -late-remat-update-threshold:
+      Type: enum
+      Value: [0, 1, 10, 50, 100, 150, 200]
+      Default: 100
+      Location: llvm/lib/CodeGen/RegisterCoalescer.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -machine-combiner-inc-threshold:
+      Type: enum
+      Value: [0, 100, 250, 500, 750, 1000]
+      Default: 500
+      Location: llvm/lib/CodeGen/MachineCombiner.cpp
+      Category: CodeGen
+      Pass: [machine-combiner]
+    -machine-sink-split-probability-threshold:
+      Type: enum
+      Value: [0, 10, 20, 40, 70, 100]
+      Default: 40
+      Location: llvm/lib/CodeGen/MachineSink.cpp
+      Category: CodeGen
+      Pass: [machine-sink]
+    -max-dependences:
+      Type: enum
+      Value: [0, 10, 25, 50, 100, 200, 500]
+      Default: 100
+      Location: llvm/lib/Analysis/LoopAccessAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-accesses]
+    -max-heap-to-stack-size:
+      Type: enum
+      Value: [32, 64, 128, 256, 512]
+      Default: 128
+      Location: llvm/lib/Transforms/IPO/AttributorAttributes.cpp
+      Category: Transforms
+      Pass: [attributor]
+    -max-loads-per-memcmp:
+      Type: enum
+      Value: [0, 1, 2, 4, 8, 16]
+      Default: 0
+      Location: llvm/lib/CodeGen/ExpandMemCmp.cpp
+      Category: CodeGen
+      Pass: [expandmemcmp]
+    -max-nested-scalar-reduction-interleave:
+      Type: enum
+      Value: [0, 1, 2, 4, 8]
+      Default: 2
+      Location: llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+      Category: Transforms
+      Pass: [loop-vectorize]
+    -max-prefetch-iters-ahead:
+      Type: enum
+      Value: [0, 10, 100, 500, 1000]
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/LoopDataPrefetch.cpp
+      Category: Transforms
+      Pass: [loop-data-prefetch]
+    -max-sched-reorder:
+      Type: enum
+      Value: [0, 1, 6, 12, 18]
+      Default: 6
+      Location: llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp
+      Category: CodeGen
+      Pass: [pre-RA-sched]
+    -max-speculation-depth:
+      Type: enum
+      Value: [0, 2, 5, 10, 20, 25]
+      Default: 10
+      Location: llvm/lib/Transforms/Utils/SimplifyCFG.cpp
+      Category: Transforms
+      Pass: [simplifycfg]
+    -max-uses-for-sinking:
+      Type: enum
+      Value: [0, 1, 10, 30, 50, 100]
+      Default: 30
+      Location: llvm/lib/Transforms/Scalar/LoopSink.cpp
+      Category: Transforms
+      Pass: [loopsink]
+    -memcmp-num-loads-per-block:
+      Type: enum
+      Value: [0, 1, 2, 4, 8, 16]
+      Default: 1
+      Location: llvm/lib/CodeGen/ExpandMemCmp.cpp
+      Category: CodeGen
+      Pass: [expandmemcmp]
+    -memdep-block-number-limit:
+      Type: enum
+      Value: [0, 100, 500, 1000, 2000]
+      Default: 1000
+      Location: llvm/lib/Analysis/MemoryDependenceAnalysis.cpp
+      Category: Analysis
+      Pass: [memdep]
+    -memory-check-merge-threshold:
+      Type: enum
+      Value: [0, 10, 50, 100, 200]
+      Default: 100
+      Location: llvm/lib/Analysis/LoopAccessAnalysis.cpp
+      Category: Analysis
+      Pass: [loop-accesses]
+    -memssa-check-limit:
+      Type: enum
+      Value: [0, 10, 50, 100, 200, 500]
+      Default: 100
+      Location: llvm/lib/Analysis/MemorySSA.cpp
+      Category: Analysis
+      Pass: [memoryssa]
+    -sched-avg-ipc:
+      Type: enum
+      Value: [1, 2, 5, 10]
+      Default: 1
+      Location: llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp
+      Category: CodeGen
+      Pass: [pre-RA-sched]
+    -sched-high-latency-cycles:
+      Type: enum
+      Value: [1, 10, 20, 50, 100]
+      Default: 10
+      Location: llvm/lib/CodeGen/SelectionDAG/ScheduleDAGSDNodes.cpp
+      Category: CodeGen
+      Pass: [pre-RA-sched]
+    -sink-freq-percent-threshold:
+      Type: enum
+      Value: [0, 10, 30, 50, 70, 90, 100]
+      Default: 90
+      Location: llvm/lib/Transforms/Scalar/LoopSink.cpp
+      Category: Transforms
+      Pass: [loopsink]
+    -spec-exec-max-not-hoisted:
+      Type: enum
+      Value: [0, 3, 5, 10, 20]
+      Default: 5
+      Location: llvm/lib/Transforms/Scalar/SpeculativeExecution.cpp
+      Category: Transforms
+      Pass: [speculative-execution]
+    -spec-exec-max-speculation-cost:
+      Type: enum
+      Value: [0, 4, 7, 10, 20]
+      Default: 7
+      Location: llvm/lib/Transforms/Scalar/SpeculativeExecution.cpp
+      Category: Transforms
+      Pass: [speculative-execution]
+    -spp-rematerialization-threshold:
+      Type: enum
+      Value: [0, 6, 12, 18, 50]
+      Default: 6
+      Location: llvm/lib/Transforms/Scalar/RewriteStatepointsForGC.cpp
+      Category: Transforms
+      Pass: [rewrite-statepoints-for-gc]
+    -stack-safety-max-iterations:
+      Type: enum
+      Value: [0, 20, 40, 60, 100]
+      Default: 20
+      Location: llvm/lib/Analysis/StackSafetyAnalysis.cpp
+      Category: Analysis
+      Pass: [stack-safety]
+    -stack-tagging-merge-init-scan-limit:
+      Type: enum
+      Value: [0, 10, 40, 60, 100]
+      Default: 40
+      Location: llvm/lib/Target/AArch64/AArch64StackTagging.cpp
+      Category: Target-AArch64
+      Pass: [aarch64-stack-tagging]
+    -static-likely-prob:
+      Type: enum
+      Value: [0, 10, 30, 60, 100]
+      Default: 60
+      Location: llvm/lib/CodeGen/MachineBranchProbabilityInfo.cpp
+      Category: CodeGen
+      Pass: [machine-branch-prob]

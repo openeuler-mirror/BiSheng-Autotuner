@@ -1,0 +1,47 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            all
+Name:            core_main.c
+Function:        none
+CodeRegionType:  other
+CodeRegionHash:  9999999999999999999
+BaselineConfig:  { OptPass: 0 }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.84:if.end172.2'
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        main
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1222222222222222222
+BaselineConfig:  { MachineScheduling : 111111 }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.5:for.body.critedge.sink.split'
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        main
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1333333333333333333
+BaselineConfig:  { MachineScheduling: 88888 }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            for.body305
+DebugLoc:        { File: core_main.c, Line: 265, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  1444444444444444444
+BaselineConfig:  { VectorizationInterleave: 9 }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body305
+DebugLoc:        { File: core_main.c, Line: 265, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  1444444444444444444
+BaselineConfig:  { UnrollCount: 9, PeelCount: option }
+...
+

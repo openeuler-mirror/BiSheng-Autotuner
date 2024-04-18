@@ -1,0 +1,111 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 7
+    File: core_list_join.c
+    Line: 287
+  BaselineConfig: { }
+  Function: core_list_insert_new
+  Name: '%bb.2:if.end'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '1111111111111111111'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 27
+    File: core_list_join.c
+    Line: 459
+  BaselineConfig: { }
+  Function: core_bench_list
+  Name: '%bb.60:if.else.i217'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '3333333333333333333'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  BaselineConfig: { }
+  Function: main
+  Name: '%bb.84:if.end172.2'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '1222222222222222222'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  BaselineConfig: { }
+  Function: main
+  Name: '%bb.5:for.body.critedge.sink.split'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '1333333333333333333'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 4
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 28
+    File: core_main.c
+    Line: 127
+  BaselineConfig: { }
+  Function: main
+  Name: '%bb.2:if.end40'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '1777777777777777777'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 5

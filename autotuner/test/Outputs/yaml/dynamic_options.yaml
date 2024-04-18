@@ -1,0 +1,26 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+[{TuningId: 1, CodeRegion: {Function: main, Name: for.cond10.preheader, CodeRegionType: loop,
+      Pass: loop-unroll, Hashcode: '15160303635972402705', BaselineConfig: {}, DynamicConfigs: {
+        UnrollCount: [0, 1, 2, 3]}, Invocation: '0', DebugLoc: {File: loop.cpp, Line: 7,
+        Column: 3}}, Params: &id001 {UnrollCount: {Value: [-1, 1, 2, 4, 8], Type: enum},
+      PeelCount: {Value: [0, 1], Type: enum}}}, {TuningId: 2, CodeRegion: {Function: main,
+      Name: for.body13, CodeRegionType: loop, Pass: loop-vectorize, Hashcode: '7657881406484902850',
+      BaselineConfig: {}, DynamicConfigs: {VectorizationInterleave: [88889, 999999]},
+      Invocation: '0', DebugLoc: {File: loop.cpp, Line: 8, Column: 4}}, Params: {
+      VectorizationInterleave: {Value: [1, 2, 4], Type: enum}}}, {TuningId: 3, CodeRegion: {
+      Function: main, Name: for.body13, CodeRegionType: loop, Pass: loop-unroll, Hashcode: '7657881406484902850',
+      BaselineConfig: {}, DynamicConfigs: {}, Invocation: '1', DebugLoc: {File: loop.cpp,
+        Line: 8, Column: 4}}, Params: *id001}, {TuningId: 4, CodeRegion: {Function: main,
+      Name: for.cond6.preheader, CodeRegionType: loop, Pass: loop-unroll, Hashcode: '15248094531589274054',
+      BaselineConfig: {}, DynamicConfigs: {}, Invocation: '0', DebugLoc: {File: loop.cpp,
+        Line: 6, Column: 2}}, Params: *id001}, {TuningId: 5, CodeRegion: {Function: main,
+      Name: vector.body, CodeRegionType: loop, Pass: loop-unroll, Hashcode: '6726358125729652219',
+      BaselineConfig: {}, DynamicConfigs: {}, Invocation: '0', DebugLoc: {File: loop.cpp,
+        Line: 8, Column: 4}}, Params: *id001}, {TuningId: 6, CodeRegion: {Function: main,
+      Name: for.cond6.preheader, CodeRegionType: loop, Pass: loop-unroll, Hashcode: '64406538923884265',
+      BaselineConfig: {}, DynamicConfigs: {}, Invocation: '1', DebugLoc: {File: loop.cpp,
+        Line: 6, Column: 2}}, Params: *id001}, {TuningId: 7, CodeRegion: {Function: main,
+      Name: for.cond10.preheader, CodeRegionType: loop, Pass: loop-unroll, Hashcode: '4849614384659443034',
+      BaselineConfig: {}, DynamicConfigs: {}, Invocation: '0', DebugLoc: {File: loop.cpp,
+        Line: 7, Column: 3}}, Params: *id001}]

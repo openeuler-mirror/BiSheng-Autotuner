@@ -1,0 +1,79 @@
+<!-- Copyright (C) 2017-2020, Huawei Technologies Co., Ltd. All rights reserved. -->
+<global_config>
+    <code_region type="loop">
+        <params>
+        <param type="enum">
+            <name>VectorizationInterleave</name>
+            <value>1</value>
+            <value>2</value>
+            <value>4</value>
+        </param>
+        <param type="enum">
+            <name>UnrollCount</name>
+            <value>0</value>
+            <value>1</value>
+            <value>2</value>
+            <value>4</value>
+            <value>8</value>
+        </param>
+        <param type="enum">
+            <name>PeelCount</name>
+            <value>0</value>
+            <value>1</value>
+        </param>
+        </params>
+    </code_region>
+    <code_region type="machine_basic_block">
+        <params>
+        <param type="enum">
+        <name>MachineScheduling</name>
+        <value>TopDown</value><value>BottomUp</value><value>Bidirectional</value>
+        </param>
+        </params>
+    </code_region>
+    <code_region type="function">
+        <params>
+        <param type="enum">
+        <name>InlineThreshold</name>
+        <value>175</value>
+        <value>225</value>
+        <value>275</value>
+        <value>325</value>
+        <value>375</value>
+        <value>425</value>
+        <value>500</value>
+        </param>
+        </params>
+   </code_region>
+    <code_region type="module">
+        <params>
+        <param type="selection">
+        <name>OptPass</name>
+        <value>ipsccp</value> <value>globalopt</value> <value>mem2reg</value> <value>deadargelim</value>
+        <value>instcombine</value> <value>simplifycfg</value> <value>prune-eh</value> <value>inline</value>
+        <value>functionattrs</value> <value>argpromotion</value> <value>sroa</value> <value>jump-threading</value>
+        <value>tailcallelim</value> <value>reassociate</value> <value>loop-simplify</value> <value>lcssa</value>
+        <value>loop-rotate</value> <value>licm</value> <value>loop-unswitch</value> <value>indvars</value>
+        <value>loop-deletion</value> <value>loop-unroll</value> <value>gvn</value> <value>memcpyopt</value>
+        <value>sccp</value> <value>dse</value> <value>adce</value> <value>strip-dead-prototypes</value>
+        <value>globaldce</value> <value>constmerge</value>
+        <value>ipsccp</value> <value>globalopt</value> <value>mem2reg</value> <value>deadargelim</value>
+        <value>instcombine</value> <value>simplifycfg</value> <value>prune-eh</value> <value>inline</value>
+        <value>functionattrs</value> <value>argpromotion</value> <value>sroa</value> <value>jump-threading</value>
+        <value>tailcallelim</value> <value>reassociate</value> <value>loop-simplify</value> <value>lcssa</value>
+        <value>loop-rotate</value> <value>licm</value> <value>loop-unswitch</value> <value>indvars</value>
+        <value>loop-deletion</value> <value>loop-unroll</value> <value>gvn</value> <value>memcpyopt</value>
+        <value>sccp</value> <value>dse</value> <value>adce</value> <value>strip-dead-prototypes</value>
+        <value>globaldce</value> <value>constmerge</value>
+        <value>ipsccp</value> <value>globalopt</value> <value>mem2reg</value> <value>deadargelim</value>
+        <value>instcombine</value> <value>simplifycfg</value> <value>prune-eh</value> <value>inline</value>
+        <value>functionattrs</value> <value>argpromotion</value> <value>sroa</value> <value>jump-threading</value>
+        <value>tailcallelim</value> <value>reassociate</value> <value>loop-simplify</value> <value>lcssa</value>
+        <value>loop-rotate</value> <value>licm</value> <value>loop-unswitch</value> <value>indvars</value>
+        <value>loop-deletion</value> <value>loop-unroll</value> <value>gvn</value> <value>memcpyopt</value>
+        <value>sccp</value> <value>dse</value> <value>adce</value> <value>strip-dead-prototypes</value>
+        <value>globaldce</value> <value>constmerge</value>
+        </param>
+        </params>
+    </code_region>
+</global_config>

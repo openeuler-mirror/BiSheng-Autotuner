@@ -1,0 +1,20 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            none
+Name:            core_matrix.c
+Function:        none
+CodeRegionType:  llvm-param
+CodeRegionHash:  0
+DynamicConfigs:  {  }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            none
+Name:            core_matrix.c
+Function:        none
+CodeRegionType:  program-param
+CodeRegionHash:  0
+DynamicConfigs:  {  }
+Invocation:      0
+...

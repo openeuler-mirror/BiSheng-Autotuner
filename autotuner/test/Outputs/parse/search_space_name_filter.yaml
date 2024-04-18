@@ -1,0 +1,52 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  BaselineConfig: { }
+  Function: core_list_find
+  Name: land.rhs
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '2222222222222222222'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_list_join.c
+    Line: 396
+  BaselineConfig: { }
+  Function: core_list_reverse
+  Name: while.body
+  DynamicConfigs: {}
+  Pass: loop-unroll
+  Hashcode: '6666666666666666666'
+  Invocation: '0'
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 2

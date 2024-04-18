@@ -1,0 +1,44 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+!AutoTuning
+Args:
+- ForceBottomUp: 0
+- ForceTopDown: 0
+CodeRegionType: machine_basic_block
+DebugLoc:
+  Column: 7
+  File: core_list_join.c
+  Line: 287
+Function: core_list_insert_new
+Name: '%bb.2:if.end'
+Pass: machine-scheduler
+CodeRegionHash: 7777777777
+Invocation: 0
+--- !AutoTuning
+Args:
+- ForceBottomUp: 0
+- ForceTopDown: 0
+CodeRegionType: machine_basic_block
+DebugLoc:
+  Column: 27
+  File: core_list_join.c
+  Line: 459
+Function: core_bench_list
+Name: '%bb.60:if.else.i217'
+Pass: machine-scheduler
+CodeRegionHash: 6666666666
+Invocation: 0
+--- !AutoTuning
+Args:
+- ForceBottomUp: 0
+- ForceTopDown: 0
+CodeRegionType: machine_basic_block
+DebugLoc:
+  Column: 0
+  File: core_main.c
+  Line: 0
+Function: main
+Name: '%bb.84:if.end172.2'
+Pass: machine-scheduler
+CodeRegionHash: 4444444444
+Invocation: 0

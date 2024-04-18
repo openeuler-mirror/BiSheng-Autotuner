@@ -1,0 +1,54 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+   CodeRegionType: loop
+   Pass: loop-unroll
+   Args:
+     UnrollCount:
+       Value: [0, 1, 2, 4, 8]
+       Type: enum
+---
+CodeRegion:
+   CodeRegionType: loop
+   Pass: loop-vectorize
+   Args:
+     VectorizationInterleave:
+       Value: [1, 2, 4]
+       Type: enum
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  Pass: machine-scheduler
+  Args:
+    MachineScheduling:
+      Value: ["TopDown", "BottomUp", "Bidirectional"]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: instruction
+  Pass: switch-lowering
+  Args:
+    MinJumpTableEntries:
+      Value: [0, 2, 4, 8, 16, 32]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: callsite
+  Pass: inline
+  Args:
+    ForceInline:
+      Type: bool
+---
+CodeRegion:
+  CodeRegionType: other
+  Pass: all
+  Args:
+    OptPass:
+      Type: selection
+      Value: [ipsccp, globalopt, mem2reg, deadargelim, instcombine, simplifycfg, prune-eh, inline, functionattrs,
+      argpromotion, sroa, jump-threading, simplifycfg, aggressive-instcombine, instcombine, tailcallelim, simplifycfg,
+      reassociate, loop-simplify, lcssa, loop-rotate, licm, loop-unswitch, simplifycfg, instcombine, loop-simplify,
+      lcssa, indvars, loop-deletion, loop-unroll, gvn, memcpyopt, sccp, instcombine, jump-threading, dse, loop-simplify,
+      lcssa, licm, simplifycfg, instcombine, globalopt, globaldce, loop-simplify, lcssa, loop-rotate, loop-simplify, instcombine,
+      simplifycfg, instcombine, loop-simplify, lcssa, loop-unroll, instcombine, loop-simplify, lcssa, licm, strip-dead-prototypes,
+      globaldce, constmerge, loop-simplify, lcssa, simplifycfg]

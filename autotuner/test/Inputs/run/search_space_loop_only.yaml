@@ -1,0 +1,199 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  Function: core_list_find
+  Name: land.rhs
+  Pass: loop-vectorize
+  Hashcode: 1111111111
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 375
+  Function: core_bench_list
+  Name: land.rhs11.i.1
+  Pass: loop-vectorize
+  Hashcode: 2222222222
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_list_join.c
+    Line: 396
+  Function: core_list_reverse
+  Name: while.body
+  Pass: loop-unroll
+  Hashcode: 3333333333
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_main.c
+    Line: 265
+  Function: main
+  Name: for.body305
+  Pass: loop-vectorize
+  Hashcode: 4444444444
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 4
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_main.c
+    Line: 313
+  Function: main
+  Name: for.body458
+  Pass: loop-unroll
+  Hashcode: 5555555555
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 5
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_main.c
+    Line: 48
+  Function: main
+  Name: for.body.i711
+  Pass: loop-vectorize
+  Hashcode: 6666666666
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 6

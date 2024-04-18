@@ -1,0 +1,278 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+   CodeRegionType: loop
+   Pass: loop-unroll
+   Args:
+     UnrollCount:
+       Value: [0, 1, 2, 4, 8]
+       Type: enum
+---
+CodeRegion:
+  CodeRegionType: callsite
+  Pass: inline
+  Args:
+    ForceInline:
+      Type: bool
+---
+CodeRegion:
+  CodeRegionType: program-param
+  Pass: none
+  Args:
+    # Register Allocation
+    -reg-spill-rematerialize-weight:
+      Type: enum
+      Value: [0.2, 0.5, 0.6]
+      Default: 0.5
+      Location: llvm/lib/CodeGen/CalcSpillWeights.cpp
+      Category: CodeGen
+      Pass: [calcspillweights]
+    -reg-spill-hint-weight:
+      Type: enum
+      Value: [1.01, 1.02, 1.1]
+      Default: 1.01
+      Location: llvm/lib/CodeGen/CalcSpillWeights.cpp
+      Category: CodeGen
+      Pass: [calcspillweights]
+    -reg-spill-loop-weight:
+      Type: enum
+      Value: [2, 3, 9]
+      Default: 3
+      Location: llvm/lib/CodeGen/CalcSpillWeights.cpp
+      Category: CodeGen
+      Pass: [calcspillweights]
+    # Switch Lowering
+    -min-jump-table-entries:
+      Type: enum
+      Value: [3, 4, 6]
+      Default: 4
+      Location: llvm/lib/CodeGen/TargetLoweringBase.cpp
+      Category: CodeGen
+      Pass: [none]
+    # Machine Basic Block Placement:
+    -align-all-blocks:
+      Type: enum
+      Value: [0, 4, 6]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -align-all-nofallthru-blocks:
+      Type: enum
+      Value: [0, 4, 6]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -loop-to-cold-block-ratio:
+      Type: enum
+      Value: [2, 5, 10]
+      Default: 5
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -force-loop-cold-block:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -block-placement-exit-block-bias:
+      Type: enum
+      Value: [0, 30, 60]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -misfetch-cost:
+      Type: enum
+      Value: [1, 3, 6]
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -jump-inst-cost:
+      Type: enum
+      Value: [1, 2, 3]
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -tail-dup-placement:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -branch-fold-placement:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -tail-dup-placement-aggressive-threshold:
+      Type: enum
+      Value: [0, 4, 6]
+      Default: 6
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -tail-dup-placement-penalty:
+      Type: enum
+      Value: [2, 4, 6]
+      Default: 2
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    -triangle-chain-count:
+      Type: enum
+      Value: [0, 2, 4]
+      Default: 2
+      Location: llvm/lib/CodeGen/MachineBlockPlacement.cpp
+      Category: CodeGen
+      Pass: [block-placement]
+    # BranchProbabilityInfo
+    -enable-large-loop-bp-enhancement:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -zero-heuristic-loop-size-threshold:
+      Type: enum
+      Value: [450, 900]
+      Default: 900
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -zero-heuristic-loop-trip-count-threshold:
+      Type: enum
+      Value: [8, 15]
+      Default: 15
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -zero-heuristic-deep-loop-size-threshold:
+      Type: enum
+      Value: [50, 100]
+      Default: 100
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -zero-heuristic-loop-depth-threshold:
+      Type: enum
+      Value: [2, 3]
+      Default: 3
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -disable-call-heuristic:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -enable-branch-prob-enhancement:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -disable-enhance-zero-heuristic:
+      Type: bool
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -disable-enhance-consecutive-if-heuristic:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    -loop-heuristic-tripcount-threshold:
+      Type: enum
+      Value: [10, 20]
+      Default: 20
+      Location: llvm/lib/Analysis/BranchProbabilityInfo.cpp
+      Category: Analysis
+      Pass: [branch-prob]
+    # MachineBranchProbabilityInfo
+    -static-likely-prob:
+      Type: enum
+      Value: [60, 70, 80]
+      Default: 60
+      Location: llvm/lib/CodeGen/MachineBranchProbabilityInfo.cpp
+      Category: CodeGen
+      Pass: [machine-branch-prob]
+    # EarlyIfConversion
+    -early-ifcvt-limit:
+      Type: enum
+      Value: [20, 30, 60]
+      Default: 30
+      Location: llvm/lib/CodeGen/EarlyIfConversion.cpp
+      Category: CodeGen
+      Pass: [early-ifcvt]
+    # Loop Rotate
+    -rotation-max-header-size:
+      Type: enum
+      Value: [8, 16, 64]
+      Default: 16
+      Location: llvm/lib/Transforms/Scalar/LoopRotation.cpp
+      Category: Transforms
+      Pass: [loop-rotate]
+    # HotCodeSplitting
+    -enable-cold-section:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/IPO/HotColdSplitting.cpp
+      Category: Transforms
+      Pass: [hotcoldsplit]
+    -hotcoldsplit-threshold:
+      Type: enum
+      Value: [0, 2, 8]
+      Default: 2
+      Location: llvm/lib/Transforms/IPO/HotColdSplitting.cpp
+      Category: Transforms
+      Pass: [hotcoldsplit]
+    -hotcoldsplit-max-params:
+      Type: enum
+      Value: [2, 4, 8]
+      Default: 4
+      Location: llvm/lib/Transforms/IPO/HotColdSplitting.cpp
+      Category: Transforms
+      Pass: [hotcoldsplit]
+    # Regiser Allocation
+    -split-spill-mode:
+      Type: enum
+      Value: ["default", "size", "speed"]
+      Default: speed
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -enable-local-reassign:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/RegAllocEvictionAdvisor.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -enable-deferred-spilling:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    -regalloc-csr-first-time-cost:
+      Type: enum
+      Value: [0, 2, 8]
+      Default: 0
+      Location: llvm/lib/CodeGen/RegAllocGreedy.cpp
+      Category: CodeGen
+      Pass: [regalloc]
+    # MachineFunction
+    -align-all-functions:
+      Type: enum
+      Value: [0, 6, 8]
+      Default: 0
+      Location: llvm/lib/CodeGen/MachineFunction.cpp
+      Category: CodeGen
+      Pass: [codegen]

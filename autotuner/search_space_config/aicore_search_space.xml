@@ -1,0 +1,27 @@
+<!-- Copyright (C) 2017-2020, Huawei Technologies Co., Ltd. All rights reserved. -->
+<global_config>
+    <code_region type="module">
+        <params>
+            <param type="enum">
+                <name>SetJumpFirst</name>
+                <value>true</value>
+                <value>false</value>
+            </param>
+            <param type="enum">
+                <name>EnableRematerialization</name>
+                <value>true</value>
+                <value>false</value>
+            </param>
+            <param type="enum">
+                <name>DisableMachineLICM</name>
+                <value>true</value>
+                <value>false</value>
+            </param>
+            <param type="range">
+                <name>EnableMISched</name>
+                <min>0</min>
+                <max>3</max>
+            </param>
+        </params>
+    </code_region>
+</global_config>

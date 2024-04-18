@@ -1,0 +1,187 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  BaselineConfig: { }
+  Function: core_list_find
+  Name: land.rhs
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '2222222222222222222'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 375
+  BaselineConfig: { }
+  Function: core_bench_list
+  Name: land.rhs11.i.1
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '5555555555555555555'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_list_join.c
+    Line: 396
+  BaselineConfig: { }
+  Function: core_list_reverse
+  Name: while.body
+  DynamicConfigs: {}
+  Pass: loop-unroll
+  Hashcode: '6666666666666666666'
+  Invocation: '0'
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_main.c
+    Line: 265
+  BaselineConfig: { }
+  Function: main
+  Name: for.body305
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '1444444444444444444'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 4
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_main.c
+    Line: 313
+  BaselineConfig: { }
+  Function: main
+  Name: for.body458
+  DynamicConfigs: {}
+  Pass: loop-unroll
+  Hashcode: '1555555555555555555'
+  Invocation: '0'
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 5
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_main.c
+    Line: 48
+  BaselineConfig: { }
+  Function: main
+  Name: for.body.i711
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '1666666666666666666'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 6
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  BaselineConfig: { }
+  Function: fake-int
+  Name: xx
+  DynamicConfigs: {}
+  Pass: int-pass
+  Hashcode: '1234'
+  Invocation: '0'
+Params:
+  DummyIntParam:
+    Type: int
+    Min: 1
+    Max: 5
+TuningId: 7
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  BaselineConfig: { }
+  Function: fake-float
+  Name: xx
+  DynamicConfigs: {}
+  Pass: float-pass
+  Hashcode: '4321'
+  Invocation: '0'
+Params:
+  DummyFloatParam:
+    Type: float
+    Min: 0.12
+    Max: 10.5
+TuningId: 8

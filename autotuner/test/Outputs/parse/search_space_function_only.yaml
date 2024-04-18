@@ -1,0 +1,47 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: function
+  DebugLoc:
+    Column: 0
+    File: core_list_join.c
+    Line: 0
+  BaselineConfig: { }
+  Function: core_list_insert_new
+  Name: ''
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '4444444444444444444'
+  Invocation: '0'
+Params:
+  ForceTargetMaxVectorInterleaveFactor:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: function
+  DebugLoc:
+    Column: 0
+    File: core_list_join.c
+    Line: 0
+  BaselineConfig: { }
+  Function: core_list_undo_remove
+  Name: ''
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '7777777777777777777'
+  Invocation: '0'
+Params:
+  ForceTargetMaxVectorInterleaveFactor:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 2
