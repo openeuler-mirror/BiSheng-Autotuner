@@ -1,0 +1,227 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body43
+DebugLoc:        { File: patricia.c, Line: 144, Column: 3 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  1683774753226692285
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body
+DebugLoc:        { File: patricia.c, Line: 123, Column: 3 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  6642599203116678420
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 70, Column: 15 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  14552437690667294952
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 335, Column: 7 }
+Function:        pat_search
+CodeRegionType:  callsite
+CodeRegionHash:  882101210042143871
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 78, Column: 15 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  9864626160053364148
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 76, Column: 16 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  9864626160053364148
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 181, Column: 19 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  4260591633395248861
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            do.body
+DebugLoc:        { File: patricia.c, Line: 110, Column: 2 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  4008575914833425683
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 78, Column: 15 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  10253574517534952801
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            land.rhs
+DebugLoc:        { File: patricia.c, Line: 175, Column: 2 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  15274382806807706620
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 175, Column: 22 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  355321576561286245
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 175, Column: 42 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  467112180721934771
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            do.body
+DebugLoc:        { File: patricia.c, Line: 110, Column: 2 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  9588516485942779793
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 183, Column: 18 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  6455336624080433701
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 112, Column: 7 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  9886990860655919118
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 180, Column: 6 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  5961133973639815501
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body
+DebugLoc:        { File: patricia.c, Line: 123, Column: 3 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  8232417578248387502
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 183, Column: 18 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  5201449304451489769
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 181, Column: 19 }
+Function:        pat_insert
+CodeRegionType:  callsite
+CodeRegionHash:  5201449304451489769
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body43
+DebugLoc:        { File: patricia.c, Line: 144, Column: 3 }
+Function:        pat_insert
+CodeRegionType:  loop
+CodeRegionHash:  2383568601775911004
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            do.body
+DebugLoc:        { File: patricia.c, Line: 326, Column: 2 }
+Function:        pat_search
+CodeRegionType:  loop
+CodeRegionHash:  11205137550299537514
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 71, Column: 16 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  17130559929675855727
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            bit
+DebugLoc:        { File: patricia.c, Line: 75, Column: 6 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  944220803125940724
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            do.body
+DebugLoc:        { File: patricia.c, Line: 326, Column: 2 }
+Function:        pat_search
+CodeRegionType:  loop
+CodeRegionHash:  2753324626573255395
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+Name:            insertR
+DebugLoc:        { File: patricia.c, Line: 76, Column: 16 }
+Function:        insertR
+CodeRegionType:  callsite
+CodeRegionHash:  16684701726216057824
+DynamicConfigs:  { }
+...

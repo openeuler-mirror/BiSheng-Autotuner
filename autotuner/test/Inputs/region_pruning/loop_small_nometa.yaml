@@ -1,0 +1,58 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  15160303635972402705
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { }
+Invocation:      1
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  15248094531589274054
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  6726358125729652219
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            inline
+CodeRegionType:  callsite
+CodeRegionHash:  1296745183745576000
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  64406538923884265
+DynamicConfigs:  { }
+Invocation:      1
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  4849614384659443034
+DynamicConfigs:  { }
+Invocation:      0
+...

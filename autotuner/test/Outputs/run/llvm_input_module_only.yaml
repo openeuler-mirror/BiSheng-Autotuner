@@ -1,0 +1,20 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+!AutoTuning
+Args:
+- OptPass: 2
+CodeRegionType: other
+Function: none
+Name: core_list_join.c
+Pass: all
+CodeRegionHash: 10101010
+Invocation: 0
+--- !AutoTuning
+Args:
+- OptPass: 1
+CodeRegionType: other
+Function: none
+Name: core_main.c
+Pass: all
+CodeRegionHash: 29292929
+Invocation: 0

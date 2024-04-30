@@ -1,0 +1,80 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Args:
+- UnrollCount: 8
+- VectorizationInterleave: 4
+- PeelCount: 0
+CodeRegionType: loop
+DebugLoc:
+  Column: 3
+  File: core_list_join.c
+  Line: 371
+Function: core_list_find
+Name: land.rhs
+Pass: loop-vectorize
+--- !AutoTuning
+Args:
+- UnrollCount: 8
+- VectorizationInterleave: 4
+- PeelCount: 1
+CodeRegionType: loop
+DebugLoc:
+  Column: 3
+  File: core_list_join.c
+  Line: 375
+Function: core_bench_list
+Name: land.rhs11.i.1
+Pass: loop-vectorize
+--- !AutoTuning
+Args:
+- UnrollCount: 4
+- VectorizationInterleave: 2
+- PeelCount: 0
+CodeRegionType: loop
+DebugLoc:
+  Column: 2
+  File: core_list_join.c
+  Line: 396
+Function: core_list_reverse
+Name: while.body
+Pass: loop-unroll
+--- !AutoTuning
+Args:
+- UnrollCount: 1
+- VectorizationInterleave: 4
+- PeelCount: 0
+CodeRegionType: loop
+DebugLoc:
+  Column: 3
+  File: core_main.c
+  Line: 265
+Function: main
+Name: for.body305
+Pass: loop-vectorize
+--- !AutoTuning
+Args:
+- UnrollCount: 1
+- VectorizationInterleave: 2
+- PeelCount: 0
+CodeRegionType: loop
+DebugLoc:
+  Column: 3
+  File: core_main.c
+  Line: 313
+Function: main
+Name: for.body458
+Pass: loop-unroll
+--- !AutoTuning
+Args:
+- UnrollCount: 2
+- VectorizationInterleave: 4
+- PeelCount: 0
+CodeRegionType: loop
+DebugLoc:
+  Column: 2
+  File: core_main.c
+  Line: 48
+Function: main
+Name: for.body.i711
+Pass: loop-vectorize

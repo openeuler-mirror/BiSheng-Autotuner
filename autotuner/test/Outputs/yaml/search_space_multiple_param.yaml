@@ -1,0 +1,154 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 7
+    File: core_list_join.c
+    Line: 287
+  BaselineConfig: { }
+  DynamicConfigs: {}
+  Function: core_list_insert_new
+  Hashcode: "1111111111111111111"
+  Invocation: "0"
+  Name: '%bb.2:if.end'
+  Pass: machine-scheduler
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+      - TopDown
+      - BottomUp
+      - Bidirectional
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_list_join.c
+    Line: 396
+  BaselineConfig: { }
+  DynamicConfigs:
+    Dummy:
+      - 2
+      - 4
+      - 8
+    PeelCount:
+      - 2
+      - 4
+      - 5
+    UnrollCount:
+      - 0
+      - 1
+      - 2
+      - 4
+      - 8
+      - 16
+  Function: core_list_reverse
+  Hashcode: "6666666666666666666"
+  Invocation: "0"
+  Name: while.body
+  Pass: loop-unroll
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+      - 0
+      - 1
+  UnrollCount:
+    Type: enum
+    Value:
+      - -1
+      - 1
+      - 2
+      - 4
+      - 8
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  BaselineConfig: { }
+  DynamicConfigs: {}
+  Function: core_list_find
+  Hashcode: "2222222222222222222"
+  Invocation: "0"
+  Name: land.rhs
+  Pass: loop-vectorize
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+      - 1
+      - 2
+      - 4
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: other
+  BaselineConfig: { }
+  DynamicConfigs: {}
+  Function: none
+  Hashcode: "8888888888888888888"
+  Invocation: "0"
+  Name: core_list_join.c
+  Pass: all
+Params:
+  OptPass:
+    Type: selection
+    Value:
+      - targetlibinfo
+      - tti
+      - tbaa
+      - scoped-noalias
+      - assumption-cache-tracker
+      - profile-summary-info
+      - forceattrs
+      - inferattrs
+      - ipsccp
+      - globalopt
+      - domtree
+      - mem2reg
+      - deadargelim
+      - domtree
+      - basicaa
+      - aa
+      - instcombine
+      - simplifycfg
+      - pgo-icall-prom
+      - basiccg
+      - globals-aa
+      - prune-eh
+      - inline
+      - functionattrs
+      - domtree
+      - sroa
+      - verify
+TuningId: 4
+---
+CodeRegion:
+  CodeRegionType: function
+  DebugLoc:
+    Column: 0
+    File: core_list_join.c
+    Line: 0
+  BaselineConfig: { }
+  DynamicConfigs: {}
+  Function: core_list_undo_remove
+  Hashcode: "7777777777777777777"
+  Invocation: "0"
+  Name: ""
+  Pass: loop-vectorize
+Params:
+  ForceTargetMaxVectorInterleaveFactor:
+    Type: enum
+    Value:
+      - 1
+      - 2
+      - 4
+      - 8
+TuningId: 5

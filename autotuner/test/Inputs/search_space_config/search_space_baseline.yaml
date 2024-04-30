@@ -1,0 +1,49 @@
+CodeRegion:
+  CodeRegionType: program-param
+  Pass: none
+  Args:
+    -reg-spill-rematerialize-weight:
+      Type: enum
+      Value: [0.2, 0.5, 0.6]
+      Default: 0.5
+      Location: llvm/lib/CodeGen/CalcSpillWeights.cpp
+      Category: CodeGen
+      Pass: [calcspillweights]
+---
+CodeRegion:
+  CodeRegionType: llvm-param
+  Pass: none
+  Args:
+    -adce-remove-control-flow:
+      Type: bool
+      Default: 0
+      Location: llvm/lib/Transforms/Scalar/ADCE.cpp
+      Category: Transforms
+      Pass: [adce]
+    -adce-remove-loops:
+      Type: bool
+      Default: 1
+      Location: llvm/lib/Transforms/Scalar/ADCE.cpp
+      Category: Transforms
+      Pass: [adce]
+    -break-anti-dependencies:
+      Type: enum
+      Value: [none, critical, all]
+      Default: none
+      Location: llvm/lib/CodeGen/PostRASchedulerList.cpp
+      Category: CodeGen
+      Pass: [post-RA-sched]
+    -chr-bias-threshold:
+      Type: enum
+      Value: [0, 0.1, 0.3, 0.5, 0.9, 0.99]
+      Default: 0.99
+      Location: llvm/lib/Transforms/Instrumentation/ControlHeightReduction.cpp
+      Category: Transforms
+      Pass: [chr]
+    -import-critical-multiplier:
+      Type: enum
+      Value: [0, 50, 100, 150, 200]
+      Default: 100
+      Location: llvm/lib/Transforms/IPO/FunctionImport.cpp
+      Category: Transforms
+      Pass: [function-import]

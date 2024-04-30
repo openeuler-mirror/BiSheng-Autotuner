@@ -1,0 +1,85 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: other
+  BaselineConfig: { }
+  Function: none
+  Name: core_list_join.c
+  DynamicConfigs: {}
+  Pass: all
+  Hashcode: '8888888888888888888'
+  Invocation: '0'
+Params:
+  OptPass:
+    Type: selection
+    Value:
+    - targetlibinfo
+    - tti
+    - tbaa
+    - scoped-noalias
+    - assumption-cache-tracker
+    - profile-summary-info
+    - forceattrs
+    - inferattrs
+    - ipsccp
+    - globalopt
+    - domtree
+    - mem2reg
+    - deadargelim
+    - domtree
+    - basicaa
+    - aa
+    - instcombine
+    - simplifycfg
+    - pgo-icall-prom
+    - basiccg
+    - globals-aa
+    - prune-eh
+    - inline
+    - functionattrs
+    - domtree
+    - sroa
+    - verify
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: other
+  BaselineConfig: { }
+  Function: none
+  Name: core_main.c
+  DynamicConfigs: {}
+  Pass: all
+  Hashcode: '9999999999999999999'
+  Invocation: '0'
+Params:
+  OptPass:
+    Type: selection
+    Value:
+    - targetlibinfo
+    - tti
+    - tbaa
+    - scoped-noalias
+    - assumption-cache-tracker
+    - profile-summary-info
+    - forceattrs
+    - inferattrs
+    - ipsccp
+    - globalopt
+    - domtree
+    - mem2reg
+    - deadargelim
+    - domtree
+    - basicaa
+    - aa
+    - instcombine
+    - simplifycfg
+    - pgo-icall-prom
+    - basiccg
+    - globals-aa
+    - prune-eh
+    - inline
+    - functionattrs
+    - domtree
+    - sroa
+    - verify
+TuningId: 2

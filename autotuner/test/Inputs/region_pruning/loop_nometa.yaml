@@ -1,0 +1,98 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  15248094531589274054
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  15160303635972402705
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  64406538923884265
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  12367401232993078516
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  6726358125729652219
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+CodeRegionType:  callsite
+CodeRegionHash:  16347580214678973880
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  13388721434366005090
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  8451253643154196987
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  7826122617353017366
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  11215423546236531287
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+CodeRegionType:  callsite
+CodeRegionHash:  18050939447140207597
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  17642471682550674873
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+CodeRegionType:  loop
+CodeRegionHash:  4849614384659443034
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            inline
+CodeRegionType:  callsite
+CodeRegionHash:  4214673161784224291
+DynamicConfigs:  { }
+...

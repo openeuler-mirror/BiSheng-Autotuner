@@ -1,0 +1,82 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.cond10.preheader
+DebugLoc:        { File: loop.cpp, Line: 7, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  15160303635972402705
+DynamicConfigs:  { UnrollCount: [ 0, 1, 2, 3 ] }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            for.body13
+DebugLoc:        { File: loop.cpp, Line: 8, Column: 4 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { VectorizationInterleave: [88889, 999999] }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body13
+DebugLoc:        { File: loop.cpp, Line: 8, Column: 4 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  7657881406484902850
+DynamicConfigs:  { }
+Invocation:      1
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.cond6.preheader
+DebugLoc:        { File: loop.cpp, Line: 6, Column: 2 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  15248094531589274054
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            vector.body
+DebugLoc:        { File: loop.cpp, Line: 8, Column: 4 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  6726358125729652219
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            inline
+Name:            entry
+DebugLoc:        { File: loop.cpp, Line: 3, Column: 0 }
+Function:        main
+CodeRegionType:  callsite
+CodeRegionHash:  1296745183745576000
+DynamicConfigs:  { }
+Invocation:      0
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.cond6.preheader
+DebugLoc:        { File: loop.cpp, Line: 6, Column: 2 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  64406538923884265
+DynamicConfigs:  { }
+Invocation:      1
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.cond10.preheader
+DebugLoc:        { File: loop.cpp, Line: 7, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  4849614384659443034
+DynamicConfigs:  { }
+Invocation:      0
+...

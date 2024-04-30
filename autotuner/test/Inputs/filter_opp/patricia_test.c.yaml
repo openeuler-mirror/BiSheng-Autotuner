@@ -1,0 +1,20 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            while.cond
+DebugLoc:        { File: patricia_test.c, Line: 134, Column: 2 }
+Function:        main1
+CodeRegionType:  loop
+CodeRegionHash:  9643728369336206742
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            while.cond
+DebugLoc:        { File: patricia_test.c, Line: 134, Column: 2 }
+Function:        main1
+CodeRegionType:  loop
+CodeRegionHash:  1921914128301420631
+DynamicConfigs:  { }
+...

@@ -1,0 +1,82 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            all
+Name:            core_main.c
+Function:        none
+CodeRegionType:  other
+CodeRegionHash:  9999999999999999999
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.84:if.end172.2'
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        main
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1222222222222222222
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.5:for.body.critedge.sink.split'
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        main
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1333333333333333333
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            for.body305
+DebugLoc:        { File: core_main.c, Line: 265, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  1444444444444444444
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            for.body458
+DebugLoc:        { File: core_main.c, Line: 313, Column: 3 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  1555555555555555555
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            for.body.i711
+DebugLoc:        { File: core_main.c, Line: 48, Column: 2 }
+Function:        main
+CodeRegionType:  loop
+CodeRegionHash:  1666666666666666666
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.2:if.end40'
+DebugLoc:        { File: core_main.c, Line: 127, Column: 28 }
+Function:        main
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1777777777777777777
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            int-pass
+Name:            xx
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        fake-int
+CodeRegionType:  loop
+CodeRegionHash:  1234
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            float-pass
+Name:            xx
+DebugLoc:        { File: core_main.c, Line: 0, Column: 0 }
+Function:        fake-float
+CodeRegionType:  loop
+CodeRegionHash:  4321
+DynamicConfigs:  { }
+...

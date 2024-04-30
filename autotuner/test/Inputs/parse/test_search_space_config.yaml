@@ -1,0 +1,91 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: loop
+  Pass: loop-unroll
+  Args:
+    UnrollCount:
+      Value: [-1, 1, 2, 4, 8]
+      Type: enum
+    PeelCount:
+      Value: [0, 1]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: loop
+  Pass: loop-vectorize
+  Args:
+    VectorizationInterleave:
+      Value: [1, 2, 4]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  Pass: machine-scheduler
+  Args:
+    MachineScheduling:
+      Value: ["TopDown", "BottomUp", "Bidirectional"]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: function
+  Pass: loop-vectorize
+  Args:
+    ForceTargetMaxVectorInterleaveFactor:
+      Value: [1, 2, 4, 8]
+      Type: enum
+---
+CodeRegion:
+  CodeRegionType: loop
+  Pass: int-pass
+  Args:
+    DummyIntParam:
+      Type: int
+      Min: 1
+      Max: 5
+---
+CodeRegion:
+  CodeRegionType: loop
+  Pass: float-pass
+  Args:
+    DummyFloatParam:
+      Type: float
+      Min: 0.12
+      Max: 10.50
+---
+CodeRegion:
+  CodeRegionType: other
+  Pass: all
+  Args:
+    OptPass:
+      Type: selection
+      Value:
+        [
+          targetlibinfo,
+          tti,
+          tbaa,
+          scoped-noalias,
+          assumption-cache-tracker,
+          profile-summary-info,
+          forceattrs,
+          inferattrs,
+          ipsccp,
+          globalopt,
+          domtree,
+          mem2reg,
+          deadargelim,
+          domtree,
+          basicaa,
+          aa,
+          instcombine,
+          simplifycfg,
+          pgo-icall-prom,
+          basiccg,
+          globals-aa,
+          prune-eh,
+          inline,
+          functionattrs,
+          domtree,
+          sroa,
+          verify,
+        ]

@@ -1,0 +1,73 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.2:if.end'
+DebugLoc:        { File: core_list_join.c, Line: 287, Column: 7 }
+Function:        core_list_insert_new
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  1111111111111111111
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            land.rhs
+DebugLoc:        { File: core_list_join.c, Line: 371, Column: 3 }
+Function:        core_list_find
+CodeRegionType:  loop
+CodeRegionHash:  2222222222222222222
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            machine-scheduler
+Name:            '%bb.60:if.else.i217'
+DebugLoc:        { File: core_list_join.c, Line: 459, Column: 27 }
+Function:        core_bench_list
+CodeRegionType:  machine_basic_block
+CodeRegionHash:  3333333333333333333
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            ''
+DebugLoc:        { File: core_list_join.c, Line: 0, Column: 0 }
+Function:        core_list_insert_new
+CodeRegionType:  function
+CodeRegionHash:  4444444444444444444
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            land.rhs11.i.1
+DebugLoc:        { File: core_list_join.c, Line: 375, Column: 3 }
+Function:        core_bench_list
+CodeRegionType:  loop
+CodeRegionHash:  5555555555555555555
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-unroll
+Name:            while.body
+DebugLoc:        { File: core_list_join.c, Line: 396, Column: 2 }
+Function:        core_list_reverse
+CodeRegionType:  loop
+CodeRegionHash:  6666666666666666666
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            loop-vectorize
+Name:            ''
+DebugLoc:        { File: core_list_join.c, Line: 0, Column: 0 }
+Function:        core_list_undo_remove
+CodeRegionType:  function
+CodeRegionHash:  7777777777777777777
+DynamicConfigs:  { }
+...
+--- !AutoTuning
+Pass:            all
+Name:            core_list_join.c
+Function:        none
+CodeRegionType:  other
+CodeRegionHash:  8888888888888888888
+DynamicConfigs:  { }
+...

@@ -1,0 +1,90 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 7
+    File: core_list_join.c
+    Line: 287
+  Function: core_list_insert_new
+  Name: '%bb.2:if.end'
+  Pass: machine-scheduler
+  Hashcode: 111111111111111111
+  Invocation: 0
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  Function: core_list_find
+  Name: land.rhs
+  Pass: loop-vectorize
+  Hashcode: 222222222222222222
+  Invocation: 0
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  Function: fake-int
+  Name: xx
+  Pass: int-pass
+  Hashcode: '1234'
+  Invocation: 0
+Params:
+  DummyIntParam:
+    Type: int
+    Min: 1
+    Max: 5
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 0
+    File: core_main.c
+    Line: 0
+  Function: fake-float
+  Name: xx
+  Pass: float-pass
+  Hashcode: '4321'
+  Invocation: 0
+Params:
+  DummyFloatParam:
+    Type: float
+    Min: 0.12
+    Max: 10.5
+TuningId: 4

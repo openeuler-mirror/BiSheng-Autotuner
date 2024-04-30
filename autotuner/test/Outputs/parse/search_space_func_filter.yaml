@@ -1,0 +1,23 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  BaselineConfig: { }
+  Function: core_list_find
+  Name: land.rhs
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '2222222222222222222'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 1

@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+auto-tuner: Legacy monolithic user interface. No longer supported.
+
+Copyright (C) 2017-2020, Huawei Technologies Co., Ltd. All rights reserved.
+"""
+
+import re
+import sys
+if __name__ == '__main__':
+    sys.path.append(sys.path[0] + '/../lib/autotuner/python')
+    from autotuner.main import main
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

@@ -1,0 +1,248 @@
+# Copyright (C) 2017-2023, Huawei Technologies Co., Ltd. All rights reserved.
+
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 7
+    File: core_list_join.c
+    Line: 287
+  BaselineConfig: { }
+  Function: core_list_insert_new
+  Name: '%bb.2:if.end'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '1111111111111111111'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 1
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 371
+  BaselineConfig: { }
+  Function: core_list_find
+  Name: land.rhs
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '2222222222222222222'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 2
+---
+CodeRegion:
+  CodeRegionType: machine_basic_block
+  DebugLoc:
+    Column: 27
+    File: core_list_join.c
+    Line: 459
+  BaselineConfig: { }
+  Function: core_bench_list
+  Name: '%bb.60:if.else.i217'
+  DynamicConfigs: {}
+  Pass: machine-scheduler
+  Hashcode: '3333333333333333333'
+  Invocation: '0'
+Params:
+  MachineScheduling:
+    Type: enum
+    Value:
+    - TopDown
+    - BottomUp
+    - Bidirectional
+TuningId: 3
+---
+CodeRegion:
+  CodeRegionType: function
+  DebugLoc:
+    Column: 0
+    File: core_list_join.c
+    Line: 0
+  BaselineConfig: { }
+  Function: core_list_insert_new
+  Name: ''
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '4444444444444444444'
+  Invocation: '0'
+Params:
+  ForceTargetMaxVectorInterleaveFactor:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 4
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 3
+    File: core_list_join.c
+    Line: 375
+  BaselineConfig: { }
+  Function: core_bench_list
+  Name: land.rhs11.i.1
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '5555555555555555555'
+  Invocation: '0'
+Params:
+  VectorizationInterleave:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+TuningId: 5
+---
+CodeRegion:
+  CodeRegionType: loop
+  DebugLoc:
+    Column: 2
+    File: core_list_join.c
+    Line: 396
+  BaselineConfig: { }
+  Function: core_list_reverse
+  Name: while.body
+  DynamicConfigs: {}
+  Pass: loop-unroll
+  Hashcode: '6666666666666666666'
+  Invocation: '0'
+Params:
+  PeelCount:
+    Type: enum
+    Value:
+    - 0
+    - 1
+  UnrollCount:
+    Type: enum
+    Value:
+    - -1
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 6
+---
+CodeRegion:
+  CodeRegionType: function
+  DebugLoc:
+    Column: 0
+    File: core_list_join.c
+    Line: 0
+  BaselineConfig: { }
+  Function: core_list_undo_remove
+  Name: ''
+  DynamicConfigs: {}
+  Pass: loop-vectorize
+  Hashcode: '7777777777777777777'
+  Invocation: '0'
+Params:
+  ForceTargetMaxVectorInterleaveFactor:
+    Type: enum
+    Value:
+    - 1
+    - 2
+    - 4
+    - 8
+TuningId: 7
+---
+CodeRegion:
+  CodeRegionType: other
+  BaselineConfig: { }
+  Function: none
+  Name: core_list_join.c
+  DynamicConfigs: {}
+  Pass: all
+  Hashcode: '8888888888888888888'
+  Invocation: '0'
+Params:
+  OptPass:
+    Type: selection
+    Value:
+    - targetlibinfo
+    - tti
+    - tbaa
+    - scoped-noalias
+    - assumption-cache-tracker
+    - profile-summary-info
+    - forceattrs
+    - inferattrs
+    - ipsccp
+    - globalopt
+    - domtree
+    - mem2reg
+    - deadargelim
+    - domtree
+    - basicaa
+    - aa
+    - instcombine
+    - simplifycfg
+    - pgo-icall-prom
+    - basiccg
+    - globals-aa
+    - prune-eh
+    - inline
+    - functionattrs
+    - domtree
+    - sroa
+    - verify
+TuningId: 8
+---
+CodeRegion:
+  CodeRegionType: other
+  BaselineConfig: { }
+  Function: none
+  Name: core_main.c
+  DynamicConfigs: {}
+  Pass: all
+  Hashcode: '9999999999999999999'
+  Invocation: '0'
+Params:
+  OptPass:
+    Type: selection
+    Value:
+    - targetlibinfo
+    - tti
+    - tbaa
+    - scoped-noalias
+    - assumption-cache-tracker
+    - profile-summary-info
+    - forceattrs
+    - inferattrs
+    - ipsccp
+    - globalopt
+    - domtree
+    - mem2reg
+    - deadargelim
+    - domtree
+    - basicaa
+    - aa
+    - instcombine
+    - simplifycfg
+    - pgo-icall-prom
+    - basiccg
+    - globals-aa
+    - prune-eh
+    - inline
+    - functionattrs
+    - domtree
+    - sroa
+    - verify
+TuningId: 9
