@@ -1,22 +1,50 @@
 # BiSheng-Autotuner
 
 #### Description
-BiSheng-Autotuner is a automate tuning command line tool for LLVM.
+BiSheng-Autotuner is a command line tool built on top of BiSheng-OpenTuner, and works with a tuning-enabled LLVM-based compiler (such as Bisheng Compiler). It manages the search space generation and parameter manipulation, and drives the entire tuning process.
 
-#### Software Architecture
-Software architecture description
+BiSheng-OpenTuner is an open-source framework for building domain-specific multi-objective automatic tuners.
+
+#### Software Dependencies
+
+1.  Python 3.6 or newer （Python 3.10 recomended）
+2.  SQLite 3.0 or newer
+
+Install or check the installation:
+
+Ubuntu / Debian
+`apt-get install python-dev sqlite3 libsqlite3-dev`
+
+CentOS / EulerOS
+`yum install -y python3-devel sqlite-deve`
+
 
 #### Installation
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Clone and install [BiSheng-OpenTuner](https://gitee.com/src-openeuler/BiSheng-opentuner/tree/master) :
+```
+cd BiSheng-opentuner/
+python3 -m pip install ./ --user
+```
 
-#### Instructions
+Install BiSheng-Autotuner :
+```
+cd BiSheng-Autotuner/
+./dev_install.sh
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### Running BiSheng-Autotuner
+
+Run the following command to see help messages on all available options:
+`./bin/llvm-autotune -h`
+
+#### Check installation
+
+`python3 -m pip show autotuner`
+
+#### Uninstall
+
+`./uninstall.sh`
 
 #### Contribution
 
@@ -24,13 +52,3 @@ Software architecture description
 2.  Create Feat_xxx branch
 3.  Commit your code
 4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
